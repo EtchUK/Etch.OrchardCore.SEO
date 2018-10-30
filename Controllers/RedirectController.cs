@@ -37,7 +37,7 @@ namespace Moov2.OrchardCore.SEO.Controllers
 
             var part = contentItem.As<RedirectPart>();
 
-            return new RedirectResult(part.ToUrl);
+            return new RedirectResult(part.ToUrl, part.IsPermanent);
         }
 
         #endregion

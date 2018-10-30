@@ -45,6 +45,7 @@ namespace Moov2.OrchardCore.SEO.Redirects.Drivers
             {
                 model.FromUrl = CleanFromUrl(part.FromUrl);
                 model.ToUrl = part.ToUrl;
+                model.IsPermanent = part.ContentItem.Id == 0 ? true : part.IsPermanent;
 
                 return Task.CompletedTask;
             });
@@ -58,6 +59,7 @@ namespace Moov2.OrchardCore.SEO.Redirects.Drivers
             {
                 part.FromUrl = viewModel.FromUrl?.Trim();
                 part.ToUrl = viewModel.ToUrl?.Trim();
+                part.IsPermanent = viewModel.IsPermanent;
             }
 
             ValidateUrls(part, updater);

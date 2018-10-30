@@ -9,5 +9,7 @@ namespace Moov2.OrchardCore.SEO.Redirects.ViewModels
 
         [Required(ErrorMessage = "The To Url field is required")]
         public string ToUrl { get; set; }
+
+        public bool IsPermanent { get; set; }
     }
 }

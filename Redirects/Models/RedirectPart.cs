@@ -10,5 +10,7 @@ namespace Moov2.OrchardCore.SEO.Redirects.Models
 
         [Required]
         public string ToUrl { get; set; }
+
+        public bool IsPermanent { get; set; }
     }
 }

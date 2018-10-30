@@ -13,3 +13,11 @@
     <input asp-for="ToUrl" class="form-control content-preview-text content-caption-text" />
     <span class="hint">@T["URL that'll be redirected to."]</span>
 </fieldset>
+
+<fieldset class="form-group">
+    <div class="custom-control custom-checkbox">
+        <input asp-for="IsPermanent" type="checkbox" class="custom-control-input">
+        <label class="custom-control-label" asp-for="IsPermanent">@T["Permanent"]</label>
+        <span class="hint">@T["When checked redirect will be permanent (301), otherwise it'll be a temporary redirect (302)."]</span>
+    </div>
+</fieldset>
