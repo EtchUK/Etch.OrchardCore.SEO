@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.1-beta</Version>
+    <PackageId>Moov2.OrchardCore.SEO</PackageId>
+    <Title>Moov2 OrchardCore SEO</Title>
+    <Authors>Moov2</Authors>
+    <Description>Module for Orchard Core that provides useful features for SEO.</Description>
+    <PackageTags>orchardcore;moov2</PackageTags>
+    <RepositoryUrl>https://github.com/moov2/Moov2.OrchardCore.SEO</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/moov2/Moov2.OrchardCore.SEO</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta3-69192" />
+    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-beta3-69192" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta3-69192" />
+  </ItemGroup>
+
+</Project>
