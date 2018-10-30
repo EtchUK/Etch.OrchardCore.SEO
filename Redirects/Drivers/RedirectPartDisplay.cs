@@ -43,7 +43,7 @@ namespace Moov2.OrchardCore.SEO.Redirects.Drivers
         {
             return Initialize<RedirectPartEditViewModel>("RedirectPart_Edit", model =>
             {
-                model.FromUrl = part.FromUrl;
+                model.FromUrl = CleanFromUrl(part.FromUrl);
                 model.ToUrl = part.ToUrl;
 
                 return Task.CompletedTask;
@@ -68,6 +68,14 @@ namespace Moov2.OrchardCore.SEO.Redirects.Drivers
         #endregion
 
         #region Helper Methods
+
+        private string CleanFromUrl(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+                return url;
+
+            return url.StartsWith("/") ? url.Substring(1) : url;
+        }
 
         private bool IsRelativeUrl(string url)
         {
