@@ -1,0 +1,15 @@
+﻿@using Moov2.OrchardCore.SEO.Redirects.ViewModels;
+
+@model RedirectPartEditViewModel
+
+<fieldset class="form-group" asp-validation-class-for="FromUrl">
+    <label asp-for="FromUrl">@T["From Url"] <span asp-validation-for="FromUrl"></span></label>
+    <input asp-for="FromUrl" class="form-control content-preview-text content-caption-text" />
+    <span class="hint">@T["Relative URL that triggers redirect."]</span>
+</fieldset>
+
+<fieldset class="form-group" asp-validation-class-for="ToUrl">
+    <label asp-for="ToUrl">@T["To Url"] <span asp-validation-for="ToUrl"></span></label>
+    <input asp-for="ToUrl" class="form-control content-preview-text content-caption-text" />
+    <span class="hint">@T["URL that'll be redirected to."]</span>
+</fieldset>
