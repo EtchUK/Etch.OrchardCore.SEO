@@ -27,7 +27,7 @@ namespace Moov2.OrchardCore.SEO.RobotsTxt
             builder
                 .Add(T["Configuration"], configuration => configuration
                     .Add(T["SEO"], settings => settings
-                        .Add(T["Robts.txt"], T["Robts.txt"], layers => layers
+                        .Add(T["Robots.txt"], T["Robots.txt"], layers => layers
                             .Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = RobotsTxtSettingsDisplayDriver.GroupId })
                             .LocalNav()
                         )));
