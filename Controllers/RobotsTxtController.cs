@@ -3,6 +3,7 @@ using Moov2.OrchardCore.SEO.RobotsTxt.Models;
 using OrchardCore.Entities;
 using OrchardCore.Modules;
 using OrchardCore.Settings;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace Moov2.OrchardCore.SEO.Controllers
@@ -35,7 +36,7 @@ namespace Moov2.OrchardCore.SEO.Controllers
             if (robotsSettings == null || robotsSettings.Mode == RobotsTxtModes.NotDefined)
                 return NotFound();
 
-            return Content(RobotsTxtModes.GetOutput(robotsSettings));
+            return Content(RobotsTxtModes.GetOutput(robotsSettings), MediaTypeNames.Text.Plain);
         }
 
         #endregion
