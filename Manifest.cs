@@ -17,3 +17,10 @@ using OrchardCore.Modules.Manifest;
     },
     Category = "Content"
 )]
+
+[assembly: Feature(
+    Id = "Moov2.OrchardCore.SEO.RobotsTxt",
+    Name = "Robots.txt",
+    Description = "Manage contents of robots.txt.",
+    Category = "Content"
+)]

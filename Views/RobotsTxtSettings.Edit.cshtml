@@ -1,0 +1,12 @@
+﻿@model Moov2.OrchardCore.SEO.RobotsTxt.ViewModels.RobosTxtSettingsViewModel
+
+@using Moov2.OrchardCore.SEO.RobotsTxt.Models
+
+<fieldset class="form-group">
+    <label asp-for="Mode">@T["Mode"]</label>
+    <select asp-for="Mode" class="form-control content-preview-select">
+        <option value="@RobotsTxtModes.NotDefined">- Select mode -</option>
+        <option value="@RobotsTxtModes.AllowAllPages">Allow all pages</option>
+        <option value="@RobotsTxtModes.DisallowAllPages">Disallow all pages</option>
+    </select>
+</fieldset>
