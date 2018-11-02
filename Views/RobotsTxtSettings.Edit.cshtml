@@ -2,6 +2,11 @@
 
 @using Moov2.OrchardCore.SEO.RobotsTxt.Models
 
+@if (Model.Mode == RobotsTxtModes.NotDefined)
+{
+    <p class="alert alert-warning"><a href="/robots.txt">robots.txt</a> will be a 404 response when no mode has been selected.</p>
+}
+
 <fieldset class="form-group">
     <label asp-for="Mode">@T["Mode"]</label>
     <select asp-for="Mode" class="form-control content-preview-select">
