@@ -11,3 +11,7 @@ Module for [Orchard Core](https://github.com/OrchardCMS/OrchardCore) that provid
 ### Redirects
 
 Create redirect content items that'll redirect a relative URL to another URL.
+
+### Robots.txt
+
+Manage contents of `/robots.txt`.
