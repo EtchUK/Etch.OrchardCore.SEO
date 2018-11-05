@@ -32,6 +32,7 @@ namespace Moov2.OrchardCore.SEO.RobotsTxt.Drivers
             return Initialize<RobosTxtSettingsViewModel>("RobotsTxtSettings_Edit", model =>
             {
                 model.Mode = settings.Mode;
+                model.CustomContent = settings.CustomContent;
             }).Location("Content:3").OnGroup(GroupId);
         }
 
@@ -44,6 +45,7 @@ namespace Moov2.OrchardCore.SEO.RobotsTxt.Drivers
                 await context.Updater.TryUpdateModelAsync(model, Prefix);
 
                 settings.Mode = model.Mode;
+                settings.CustomContent = model.CustomContent;
             }
 
             return await EditAsync(settings, context);

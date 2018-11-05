@@ -8,6 +8,7 @@ namespace Moov2.OrchardCore.SEO.RobotsTxt.Models
         public const int NotDefined = 0;
         public const int AllowAllPages = 1;
         public const int DisallowAllPages = 2;
+        public const int Custom = 3;
 
         public static string AllowAllPagesOutput = $"User-agent: *{Environment.NewLine}Disallow:";
         public static string DisallowAllPagesOutput = $"User-agent: *{Environment.NewLine}Disallow: /";
@@ -21,6 +22,9 @@ namespace Moov2.OrchardCore.SEO.RobotsTxt.Models
 
         public static string GetOutput(RobotsTxtSettings settings)
         {
+            if (settings.Mode == Custom)
+                return settings.CustomContent;
+
             return Outputs[settings.Mode];
         }
     }

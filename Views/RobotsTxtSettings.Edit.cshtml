@@ -9,9 +9,40 @@
 
 <fieldset class="form-group">
     <label asp-for="Mode">@T["Mode"]</label>
-    <select asp-for="Mode" class="form-control content-preview-select">
+    <select asp-for="Mode" class="form-control content-preview-select js-mode-select">
         <option value="@RobotsTxtModes.NotDefined">- Select mode -</option>
         <option value="@RobotsTxtModes.AllowAllPages">Allow all pages</option>
         <option value="@RobotsTxtModes.DisallowAllPages">Disallow all pages</option>
+        <option value="@RobotsTxtModes.Custom">Custom</option>
     </select>
 </fieldset>
+
+<fieldset class="form-group js-custom-content-field" style="display: none;">
+    <label asp-for="CustomContent">@T["Custom Content"]</label>
+    <textarea asp-for="CustomContent" rows="5" class="form-control content-preview-text"></textarea>
+    <span class="hint">@T["For more information on formatting robots.txt, visit <a href=\"https://robotstxt.org\">robotstxt.org</a>."]</span>
+</fieldset>
+
+<script type="text/javascript">
+    document.onreadystatechange = function () {
+        if (document.readyState != "interactive") {
+            return;
+        }
+
+        var $customContentField = document.querySelector('.js-custom-content-field');
+        var $modeSelect = document.querySelector('.js-mode-select');
+
+        var setCustomContentFieldVisibility = function () {
+            if ($modeSelect.value === "@RobotsTxtModes.Custom") {
+                $customContentField.style.display = 'block';
+                return;
+            }
+
+            $customContentField.style.display = 'none';
+        };
+
+        $modeSelect.addEventListener('change', setCustomContentFieldVisibility);
+
+        setCustomContentFieldVisibility();
+    };
+</script>
