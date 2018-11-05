@@ -5,6 +5,7 @@ using Moov2.OrchardCore.SEO.RobotsTxt.Drivers;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.Modules;
 using OrchardCore.Navigation;
+using OrchardCore.Security.Permissions;
 using OrchardCore.Settings;
 using System;
 
@@ -16,8 +17,8 @@ namespace Moov2.OrchardCore.SEO.RobotsTxt
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<INavigationProvider, AdminMenu>();
-
             services.AddScoped<IDisplayDriver<ISite>, RobotsTxtSettingsDisplayDriver>();
+            services.AddScoped<IPermissionProvider, Permissions>();
         }
 
         public override void Configure(IApplicationBuilder app, IRouteBuilder routes, IServiceProvider serviceProvider)

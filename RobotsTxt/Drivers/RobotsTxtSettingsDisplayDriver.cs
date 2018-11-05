@@ -1,4 +1,6 @@
-﻿using Moov2.OrchardCore.SEO.RobotsTxt.Models;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Moov2.OrchardCore.SEO.RobotsTxt.Models;
 using Moov2.OrchardCore.SEO.RobotsTxt.ViewModels;
 using OrchardCore.DisplayManagement.Entities;
 using OrchardCore.DisplayManagement.Handlers;
@@ -16,11 +18,19 @@ namespace Moov2.OrchardCore.SEO.RobotsTxt.Drivers
 
         #endregion
 
+        #region Dependencies
+
+        private readonly IAuthorizationService _authorizationService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        #endregion
+
         #region Constructor
 
-        public RobotsTxtSettingsDisplayDriver()
+        public RobotsTxtSettingsDisplayDriver(IAuthorizationService authorizationService, IHttpContextAccessor httpContextAccessor)
         {
-
+            _authorizationService = authorizationService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         #endregion
@@ -29,6 +39,13 @@ namespace Moov2.OrchardCore.SEO.RobotsTxt.Drivers
 
         public override async Task<IDisplayResult> EditAsync(RobotsTxtSettings settings, BuildEditorContext context)
         {
+            var user = _httpContextAccessor.HttpContext?.User;
+
+            if (!await _authorizationService.AuthorizeAsync(user, Permissions.ManageRobotsTxt))
+            {
+                return null;
+            }
+
             return Initialize<RobosTxtSettingsViewModel>("RobotsTxtSettings_Edit", model =>
             {
                 model.Mode = settings.Mode;
@@ -38,6 +55,13 @@ namespace Moov2.OrchardCore.SEO.RobotsTxt.Drivers
 
         public override async Task<IDisplayResult> UpdateAsync(RobotsTxtSettings settings, BuildEditorContext context)
         {
+            var user = _httpContextAccessor.HttpContext?.User;
+
+            if (!await _authorizationService.AuthorizeAsync(user, Permissions.ManageRobotsTxt))
+            {
+                return null;
+            }
+
             if (context.GroupId == GroupId)
             {
                 var model = new RobosTxtSettingsViewModel();
