@@ -15,3 +15,7 @@ Create redirect content items that'll redirect a relative URL to another URL.
 ### Robots.txt
 
 Manage contents of `/robots.txt`.
+
+## Installing
+
+This module is available on [NuGet](https://www.nuget.org/packages/Moov2.OrchardCore.SEO). Add a reference to your Orchard Core web project via the NuGet package manager. Search for "Moov2.OrchardCore.SEO", ensuring include prereleases is checked.
