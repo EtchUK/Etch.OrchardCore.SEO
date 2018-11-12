@@ -24,3 +24,11 @@ using OrchardCore.Modules.Manifest;
     Description = "Manage contents of robots.txt.",
     Category = "Content"
 )]
+
+
+[assembly: Feature(
+    Id = "Moov2.OrchardCore.SEO.HostnameRedirects",
+    Name = "Hostname Redirects",
+    Description = "Manage hostname redirects.",
+    Category = "Content"
+)]
