@@ -4,7 +4,7 @@
 
 <fieldset class="form-group">
     <label asp-for="Redirect">@T["Redirect"]</label>
-    <select asp-for="Redirect" class="form-control content-preview-select">
+    <select asp-for="Redirect" class="form-control content-preview-select js-redirect-select">
         <option value="@HostnameRedirectModes.None">@T["No Redirect"]</option>
         <option value="@HostnameRedirectModes.NonWWW">@T["Redirect to none WWW"]</option>
         <option value="@HostnameRedirectModes.WWW">@T["Redirect to WWW"]</option>
@@ -15,12 +15,12 @@
     <span class="hint">@T["Redirect to Domain: Visitors making a request to the site not using the configured domain will be redirected with a 301 response to the domain."]</span><br/>
 </fieldset>
 
-<fieldset class="form-group" asp-validation-class-for="RedirectToSiteUrl">
+<fieldset class="form-group js-redirect-to-site-field" asp-validation-class-for="RedirectToSiteUrl">
     <label asp-for="RedirectToSiteUrl">@T["Redirect to Domain"] <span asp-validation-for="RedirectToSiteUrl"></span></label>
     <input asp-for="RedirectToSiteUrl" class="form-control content-preview-text content-caption-text" placeholder="E.g. https://domain.example.com" />
 </fieldset>
 
-<fieldset class="form-group" asp-validation-class-for="ForceSSL">
+<fieldset class="form-group" asp-validation-class-for="ForceSSL" style="display: none;">
     <div class="custom-control custom-checkbox">
         <input asp-for="ForceSSL" type="checkbox" class="custom-control-input">
         <label class="custom-control-label" asp-for="ForceSSL">@T["Force SSL"]</label>
@@ -33,3 +33,27 @@
     <textarea asp-for="IgnoredUrls" rows="5" class="form-control content-preview-text"></textarea>
     <span class="hint">@T["URLs that should be ignored by the redirect settings (ideal for handling staging slots within Azure). Use a new line to seperate each URL."]</span>
 </fieldset>
+
+<script type="text/javascript">
+    document.onreadystatechange = function () {
+        if (document.readyState != "interactive") {
+            return;
+        }
+
+        var $redirectToSiteField = document.querySelector('.js-redirect-to-site-field');
+        var $redirectSelect = document.querySelector('.js-redirect-select');
+
+        var setCustomContentFieldVisibility = function () {
+            if ($redirectSelect.value === "@HostnameRedirectModes.Domain") {
+                $redirectToSiteField.style.display = 'block';
+                return;
+            }
+
+            $redirectToSiteField.style.display = 'none';
+        };
+
+        $redirectSelect.addEventListener('change', setCustomContentFieldVisibility);
+
+        setCustomContentFieldVisibility();
+    };
+</script>
