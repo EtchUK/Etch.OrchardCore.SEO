@@ -48,7 +48,10 @@ namespace Moov2.OrchardCore.SEO.HostnameRedirects.Drivers
 
             return Initialize<HostnameRedirectsSettingsViewModel>("HostnameRedirectsSettings_Edit", model =>
             {
-                model.Mode = settings.Mode;
+                model.Redirect = settings.Redirect;
+                model.ForceSSL = settings.ForceSSL;
+                model.RedirectToSiteUrl = settings.RedirectToSiteUrl;
+                model.IgnoredUrls = settings.IgnoredUrls;
             }).Location("Content:3").OnGroup(GroupId);
         }
 
@@ -67,7 +70,10 @@ namespace Moov2.OrchardCore.SEO.HostnameRedirects.Drivers
 
                 await context.Updater.TryUpdateModelAsync(model, Prefix);
 
-                settings.Mode = model.Mode;
+                settings.Redirect = model.Redirect;
+                settings.ForceSSL = model.ForceSSL;
+                settings.RedirectToSiteUrl = model.RedirectToSiteUrl;
+                settings.IgnoredUrls = model.IgnoredUrls;
             }
 
             return await EditAsync(settings, context);

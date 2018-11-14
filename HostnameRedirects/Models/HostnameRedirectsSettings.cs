@@ -2,6 +2,9 @@
 {
     public class HostnameRedirectsSettings
     {
-        public int Mode { get; set; }
+        public int Redirect { get; set; }
+        public string RedirectToSiteUrl { get; set; }
+        public bool ForceSSL { get; set; }
+        public string IgnoredUrls { get; set; }
     }
 }
