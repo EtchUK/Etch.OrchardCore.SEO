@@ -2,6 +2,17 @@
 
 @using Moov2.OrchardCore.SEO.HostnameRedirects.Models
 
+
+<fieldset class="form-group" asp-validation-class-for="ForceSSL">
+    <div class="custom-control custom-checkbox">
+        <input asp-for="ForceSSL" type="checkbox" class="custom-control-input">
+        <label class="custom-control-label" asp-for="ForceSSL">@T["Force SSL"]</label><br/>
+        <span class="hint">@T["Force visitors to use SSL (https). This is a basic implementation that will change the URL from http to https."]</span>
+    </div>
+</fieldset>
+
+<hr />
+
 <fieldset class="form-group">
     <label asp-for="Redirect">@T["Redirect"]</label>
     <select asp-for="Redirect" class="form-control content-preview-select js-redirect-select">
@@ -10,23 +21,17 @@
         <option value="@HostnameRedirectModes.WWW">@T["Redirect to WWW"]</option>
         <option value="@HostnameRedirectModes.Domain">@T["Redirect to Domain"]</option>
     </select>
-    <span class="hint">@T["Redirect to none WWW: Visitors making a request to the site using \"www\" will be redirected with a 301 response to the same URL without www."]</span><br/>
-    <span class="hint">@T["Redirect to WWW: Visitors making a request to the site not using \"www\" will be redirected with a 301 response to the same URL with www."]</span><br/>
-    <span class="hint">@T["Redirect to Domain: Visitors making a request to the site not using the configured domain will be redirected with a 301 response to the domain."]</span><br/>
+    <span class="hint">@T["Redirect to none WWW: Visitors making a request to the site using \"www\" will be redirected with a 301 response to the same URL without www."]</span><br />
+    <span class="hint">@T["Redirect to WWW: Visitors making a request to the site not using \"www\" will be redirected with a 301 response to the same URL with www."]</span><br />
+    <span class="hint">@T["Redirect to Domain: Visitors making a request to the site not using the configured domain will be redirected with a 301 response to the domain."]</span><br />
 </fieldset>
 
-<fieldset class="form-group js-redirect-to-site-field" asp-validation-class-for="RedirectToSiteUrl">
+<fieldset class="form-group js-redirect-to-site-field" asp-validation-class-for="RedirectToSiteUrl" style="display: none;">
     <label asp-for="RedirectToSiteUrl">@T["Redirect to Domain"] <span asp-validation-for="RedirectToSiteUrl"></span></label>
     <input asp-for="RedirectToSiteUrl" class="form-control content-preview-text content-caption-text" placeholder="E.g. https://domain.example.com" />
 </fieldset>
 
-<fieldset class="form-group" asp-validation-class-for="ForceSSL" style="display: none;">
-    <div class="custom-control custom-checkbox">
-        <input asp-for="ForceSSL" type="checkbox" class="custom-control-input">
-        <label class="custom-control-label" asp-for="ForceSSL">@T["Force SSL"]</label>
-        <span class="hint">@T["Force visitors to use SSL (https). This is a basic implementation that will change the URL from http to https."]</span>
-    </div>
-</fieldset>
+<hr />
 
 <fieldset class="form-group" asp-validation-class-for="IgnoredUrls">
     <label asp-for="IgnoredUrls">@T["Ignored URLs"] <span asp-validation-for="IgnoredUrls"></span></label>
