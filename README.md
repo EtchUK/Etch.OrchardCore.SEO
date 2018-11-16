@@ -8,13 +8,13 @@ Module for [Orchard Core](https://github.com/OrchardCMS/OrchardCore) that provid
 
 ## Features
 
-### Redirects
-
-Create redirect content items that'll redirect a relative URL to another URL.
-
 ### Hostname redirects
 
 Define main hostname to redirect all domain variations and force SSL.
+
+### Redirects
+
+Create redirect content items that'll redirect a relative URL to another URL.
 
 ### Robots.txt
 
