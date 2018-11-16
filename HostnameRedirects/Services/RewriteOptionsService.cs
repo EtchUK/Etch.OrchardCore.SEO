@@ -65,9 +65,6 @@ namespace Moov2.OrchardCore.SEO.HostnameRedirects.Services {
                 return false;
             }
 
-
-            var ignoredUrls = settings.IgnoredUrls.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-
             return settings.IgnoredUrls.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).Any(x => url.StartsWith(x));
         }
 
