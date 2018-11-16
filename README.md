@@ -12,6 +12,10 @@ Module for [Orchard Core](https://github.com/OrchardCMS/OrchardCore) that provid
 
 Create redirect content items that'll redirect a relative URL to another URL.
 
+### Hostname redirects
+
+Define main hostname to redirect all domain variations and force SSL.
+
 ### Robots.txt
 
 Manage contents of `/robots.txt`.
