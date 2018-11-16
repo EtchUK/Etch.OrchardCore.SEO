@@ -24,7 +24,13 @@ namespace Moov2.OrchardCore.SEO.HostnameRedirects.Services {
 
         #endregion
 
+        #region Properties
+
         public int StatusCode { get; } = (int) HttpStatusCode.MovedPermanently;
+
+        #endregion
+
+        #region Implementation
 
         public void ApplyRule(RewriteContext context) {
             var hostnameRedirectsSettings = _hostRedirectService.GetSettingsAsync().GetAwaiter().GetResult();
@@ -51,6 +57,8 @@ namespace Moov2.OrchardCore.SEO.HostnameRedirects.Services {
                 return;
             }
         }
+
+        #endregion
 
         #region Helpers
 
