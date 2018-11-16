@@ -65,7 +65,7 @@ namespace Moov2.OrchardCore.SEO.HostnameRedirects.Services {
                 return false;
             }
 
-            return settings.IgnoredUrls.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).Any(x => url.StartsWith(x));
+            return settings.IgnoredUrls.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).Any(x => url.StartsWith(x));
         }
 
         private Uri ValidateWWW(HostnameRedirectsSettings settings, Uri url) {
