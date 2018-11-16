@@ -54,7 +54,7 @@ namespace Moov2.OrchardCore.SEO.HostnameRedirects.Services {
 
         #region Helpers
 
-        private string getURL(RewriteContext context) {
+        private string GetURL(RewriteContext context) {
             var request = context.HttpContext.Request;
             var url = request.Scheme + "://" + request.Host.Value + request.PathBase + request.Path + request.QueryString;
 
