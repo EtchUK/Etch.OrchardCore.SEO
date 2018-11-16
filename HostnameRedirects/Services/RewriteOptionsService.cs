@@ -29,7 +29,7 @@ namespace Moov2.OrchardCore.SEO.HostnameRedirects.Services {
         public void ApplyRule(RewriteContext context) {
             var hostnameRedirectsSettings = _hostRedirectService.GetSettingsAsync().GetAwaiter().GetResult();
 
-            var url = getURL(context);
+            var url = GetURL(context);
 
             if (CheckIfIgnored(hostnameRedirectsSettings, url)) {
                 context.Result = RuleResult.ContinueRules;
