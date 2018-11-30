@@ -4,14 +4,14 @@ using OrchardCore.Modules.Manifest;
     Name = "SEO",
     Author = "Moov2",
     Website = "https://moov2.com",
-    Version = "0.0.2"
+    Version = "0.3.0"
 )]
 
 [assembly: Feature(
     Id = "Moov2.OrchardCore.SEO.Redirects",
     Name = "Redirects",
     Description = "Create 301 redirects.",
-    Dependencies = new [] 
+    Dependencies = new[]
     {
         "OrchardCore.Title"
     },
