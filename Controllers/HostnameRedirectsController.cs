@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OrchardCore.Entities;
 using OrchardCore.Modules;
 using OrchardCore.Settings;
 using System.Net.Mime;
-using System.Threading.Tasks;
 
 namespace Moov2.OrchardCore.SEO.Controllers
 {
@@ -27,7 +25,7 @@ namespace Moov2.OrchardCore.SEO.Controllers
 
         #region Actions
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return Content("", MediaTypeNames.Text.Plain);
         }
