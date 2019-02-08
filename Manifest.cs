@@ -32,3 +32,10 @@ using OrchardCore.Modules.Manifest;
     Description = "Manage hostname redirects.",
     Category = "Content"
 )]
+
+[assembly: Feature(
+    Id = "Moov2.OrchardCore.SEO.MetaTags",
+    Name = "Meta Tags",
+    Description = "Manage meta tags for content items.",
+    Category = "Content"
+)]

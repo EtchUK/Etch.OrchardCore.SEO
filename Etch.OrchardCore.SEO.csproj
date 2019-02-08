@@ -21,6 +21,7 @@
     <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-beta3-71077" />
     <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta3-71077" />
     <PackageReference Include="OrchardCore.Navigation.Core" Version="1.0.0-beta3-71077" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-beta3-71077" />
   </ItemGroup>
 
   <ItemGroup>

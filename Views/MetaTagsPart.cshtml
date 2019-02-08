@@ -1,0 +1,10 @@
+﻿@model Moov2.OrchardCore.SEO.MetaTags.ViewModels.MetaTagsPartViewModel
+
+@{
+    var metaTags = Model.GetMetaTags();
+}
+
+@foreach (var tag in metaTags)
+{
+    <p>@tag.Name - @tag.Value</p>
+}

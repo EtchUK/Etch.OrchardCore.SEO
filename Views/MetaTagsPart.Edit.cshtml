@@ -1,0 +1,11 @@
+﻿@model Moov2.OrchardCore.SEO.MetaTags.ViewModels.MetaTagsPartViewModel
+
+<h5>
+    Meta Tags <span class="hint">— Manage content for SEO and social media sharing</span>
+</h5>
+
+<fieldset class="form-group" asp-validation-class-for="Data">
+    <label asp-for="Data">@T["Data"]</label>
+    <textarea asp-for="Data" class="form-control content-preview-text"></textarea>
+    <span asp-validation-for="Data"></span>
+</fieldset>
