@@ -1,13 +1,11 @@
 ﻿using OrchardCore.ContentManagement;
-using System.ComponentModel.DataAnnotations;
 
 namespace Moov2.OrchardCore.SEO.MetaTags.Models
 {
     public class MetaTagsPart : ContentPart
     {
-        [Required]
-        public string Data { get; set; }
-
-        public bool HasData => !string.IsNullOrWhiteSpace(Data);
+        public string Description { get; set; }
+        public string[] Images { get; set; }
+        public string Title { get; set; }
     }
 }

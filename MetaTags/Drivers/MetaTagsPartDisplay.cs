@@ -1,11 +1,11 @@
 ﻿using Moov2.OrchardCore.SEO.MetaTags.Models;
+using Moov2.OrchardCore.SEO.MetaTags.Services;
 using Moov2.OrchardCore.SEO.MetaTags.ViewModels;
 using Newtonsoft.Json;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
-using OrchardCore.ResourceManagement;
-using System.Collections.Generic;
+using System;
 using System.Threading.Tasks;
 
 namespace Moov2.OrchardCore.SEO.MetaTags.Drivers
@@ -14,15 +14,15 @@ namespace Moov2.OrchardCore.SEO.MetaTags.Drivers
     {
         #region Dependencies
 
-        private readonly IResourceManager _resourceManager;
+        private readonly IMetaTagsService _metaTagsService;
 
         #endregion
 
         #region Constructor
 
-        public MetaTagsPartDisplay(IResourceManager resourceManager)
+        public MetaTagsPartDisplay(IMetaTagsService metaTagsService)
         {
-            _resourceManager = resourceManager;
+            _metaTagsService = metaTagsService;
         }
 
         #endregion
@@ -31,33 +31,44 @@ namespace Moov2.OrchardCore.SEO.MetaTags.Drivers
 
         public override IDisplayResult Display(MetaTagsPart metaTagsPart)
         {
-            if (!metaTagsPart.HasData)
-            {
-                return null;
-            }
+            _metaTagsService.RegisterDefaults(metaTagsPart);
+            _metaTagsService.RegisterOpenGraph(metaTagsPart);
+            _metaTagsService.RegisterTwitter(metaTagsPart);
 
-            foreach (var entry in JsonConvert.DeserializeObject<IList<MetaEntry>>(metaTagsPart.Data))
+            return Initialize<MetaTagsPartViewModel>("MetaTagsPart", model =>
             {
-                _resourceManager.RegisterMeta(entry);
-            }
-
-            return null;
+                model.Title = metaTagsPart.Title;
+            })
+            .Location("Detail", "Header:1");
         }
 
         public override IDisplayResult Edit(MetaTagsPart metaTagsPart)
         {
             return Initialize<MetaTagsPartViewModel>("MetaTagsPart_Edit", model =>
             {
-                model.Data = metaTagsPart.Data;
+                model.Description = metaTagsPart.Description;
+                model.Images = JsonConvert.SerializeObject(metaTagsPart.Images);
+                model.Title = metaTagsPart.Title;
                 return Task.CompletedTask;
             });
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(MetaTagsPart model, IUpdateModel updater)
+        public override async Task<IDisplayResult> UpdateAsync(MetaTagsPart part, IUpdateModel updater)
         {
-            await updater.TryUpdateModelAsync(model, Prefix, t => t.Data);
+            var model = new MetaTagsPartViewModel();
 
-            return Edit(model);
+            if (await updater.TryUpdateModelAsync(model, Prefix, t => t.Description, t => t.Title, t => t.Images))
+            {
+                part.Title = model.Title;
+                part.Description = model.Description;
+
+                part.Images = string.IsNullOrWhiteSpace(model.Images)
+                    ? Array.Empty<string>()
+                    : JsonConvert.DeserializeObject<string[]>(model.Images);
+
+            }
+
+            return Edit(part);
         }
 
         #endregion
