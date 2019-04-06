@@ -36,6 +36,10 @@ using OrchardCore.Modules.Manifest;
 [assembly: Feature(
     Id = "Moov2.OrchardCore.SEO.MetaTags",
     Name = "Meta Tags",
+    Dependencies = new[]
+    {
+        "OrchardCore.Media"
+    },
     Description = "Manage meta tags for content items.",
     Category = "Content"
 )]

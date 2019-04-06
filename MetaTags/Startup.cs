@@ -1,7 +1,11 @@
 ﻿using Fluid;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Moov2.OrchardCore.SEO.MetaTags.Drivers;
 using Moov2.OrchardCore.SEO.MetaTags.Models;
+using Moov2.OrchardCore.SEO.MetaTags.Services;
 using Moov2.OrchardCore.SEO.MetaTags.ViewModels;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
@@ -24,6 +28,8 @@ namespace Moov2.OrchardCore.SEO.MetaTags
             services.AddSingleton<ContentPart, MetaTagsPart>();
 
             services.AddScoped<IDataMigration, Migrations>();
+
+            services.AddScoped<IMetaTagsService, MetaTagsService>();
         }
     }
 }
