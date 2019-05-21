@@ -6,6 +6,10 @@ Module for [Orchard Core](https://github.com/OrchardCMS/OrchardCore) that provid
 
 [![Build Status](https://secure.travis-ci.org/etchuk/Etch.OrchardCore.SEO.png?branch=master)](http://travis-ci.org/etchuk/Etch.OrchardCore.SEO) [![NuGet](https://img.shields.io/nuget/v/Etch.OrchardCore.SEO.svg)](https://www.nuget.org/packages/Etch.OrchardCore.SEO)
 
+## Orchard Core Reference
+
+This module is referencing the beta 3 build of Orchard Core ([`1.0.0-beta3-71077`](https://www.nuget.org/packages/OrchardCore.Module.Targets/1.0.0-beta3-71077)).
+
 ## Features
 
 ### Hostname redirects
