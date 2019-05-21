@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Moov2.OrchardCore.SEO.RobotsTxt.Models;
+using Etch.OrchardCore.SEO.RobotsTxt.Models;
 using OrchardCore.Entities;
 using OrchardCore.Modules;
 using OrchardCore.Settings;
 using System.Net.Mime;
 using System.Threading.Tasks;
 
-namespace Moov2.OrchardCore.SEO.Controllers
+namespace Etch.OrchardCore.SEO.Controllers
 {
-    [Feature("Moov2.OrchardCore.SEO.RobotsTxt")]
+    [Feature("Etch.OrchardCore.SEO.RobotsTxt")]
     public class RobotsTxtController : Controller
     {
         #region Dependencies

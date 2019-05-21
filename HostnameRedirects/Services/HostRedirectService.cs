@@ -1,9 +1,9 @@
-﻿using Moov2.OrchardCore.SEO.HostnameRedirects.Models;
+﻿using Etch.OrchardCore.SEO.HostnameRedirects.Models;
 using OrchardCore.Entities;
 using OrchardCore.Settings;
 using System.Threading.Tasks;
 
-namespace Moov2.OrchardCore.SEO.HostnameRedirects.Services {
+namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
 
     public class HostRedirectService : IHostRedirectService {
         private readonly ISiteService _siteService;

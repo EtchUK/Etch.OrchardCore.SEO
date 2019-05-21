@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Localization;
-using Moov2.OrchardCore.SEO.HostnameRedirects.Drivers;
+using Etch.OrchardCore.SEO.HostnameRedirects.Drivers;
 using OrchardCore.Modules;
 using OrchardCore.Navigation;
 using System;
 using System.Threading.Tasks;
 
-namespace Moov2.OrchardCore.SEO.HostnameRedirects
+namespace Etch.OrchardCore.SEO.HostnameRedirects
 {
-    [Feature("Moov2.OrchardCore.SEO.HostnameRedirects")]
+    [Feature("Etch.OrchardCore.SEO.HostnameRedirects")]
     public class AdminMenu : INavigationProvider
     {
         public AdminMenu(IStringLocalizer<AdminMenu> localizer)

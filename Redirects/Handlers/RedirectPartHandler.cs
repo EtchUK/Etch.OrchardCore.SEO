@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Routing;
-using Moov2.OrchardCore.SEO.Redirects.Models;
-using Moov2.OrchardCore.SEO.Redirects.Services;
+using Etch.OrchardCore.SEO.Redirects.Models;
+using Etch.OrchardCore.SEO.Redirects.Services;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Handlers;
 using System.Threading.Tasks;
 
-namespace Moov2.OrchardCore.SEO.Redirects.Handlers
+namespace Etch.OrchardCore.SEO.Redirects.Handlers
 {
     public class RedirectPartHandler : ContentPartHandler<RedirectPart>
     {
@@ -33,7 +33,7 @@ namespace Moov2.OrchardCore.SEO.Redirects.Handlers
                 if (metadata.DisplayRouteValues == null)
                 {
                     metadata.DisplayRouteValues = new RouteValueDictionary {
-                        {"Area", "Moov2.OrchardCore.SEO"},
+                        {"Area", "Etch.OrchardCore.SEO"},
                         {"Controller", "Redirect"},
                         {"Action", "Index"},
                         {"ContentItemId", context.ContentItem.ContentItemId}

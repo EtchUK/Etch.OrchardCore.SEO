@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Localization;
-using Moov2.OrchardCore.SEO.Redirects.Models;
-using Moov2.OrchardCore.SEO.Redirects.ViewModels;
+using Etch.OrchardCore.SEO.Redirects.Models;
+using Etch.OrchardCore.SEO.Redirects.ViewModels;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
@@ -9,7 +9,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Moov2.OrchardCore.SEO.Redirects.Drivers
+namespace Etch.OrchardCore.SEO.Redirects.Drivers
 {
     public class RedirectPartDisplay : ContentPartDisplayDriver<RedirectPart>
     {

@@ -1,4 +1,4 @@
-﻿namespace Moov2.OrchardCore.SEO.RobotsTxt.ViewModels
+﻿namespace Etch.OrchardCore.SEO.RobotsTxt.ViewModels
 {
     public class RobosTxtSettingsViewModel
     {
