@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Localization;
-using Moov2.OrchardCore.SEO.RobotsTxt.Drivers;
+using Etch.OrchardCore.SEO.RobotsTxt.Drivers;
 using OrchardCore.Modules;
 using OrchardCore.Navigation;
 using System;
 using System.Threading.Tasks;
 
-namespace Moov2.OrchardCore.SEO.RobotsTxt
+namespace Etch.OrchardCore.SEO.RobotsTxt
 {
-    [Feature("Moov2.OrchardCore.SEO.RobotsTxt")]
+    [Feature("Etch.OrchardCore.SEO.RobotsTxt")]
     public class AdminMenu : INavigationProvider
     {
         public AdminMenu(IStringLocalizer<AdminMenu> localizer)

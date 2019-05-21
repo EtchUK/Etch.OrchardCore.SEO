@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using Moov2.OrchardCore.SEO.Redirects.Drivers;
-using Moov2.OrchardCore.SEO.Redirects.Handlers;
-using Moov2.OrchardCore.SEO.Redirects.Indexes;
-using Moov2.OrchardCore.SEO.Redirects.Models;
-using Moov2.OrchardCore.SEO.Redirects.Services;
+using Etch.OrchardCore.SEO.Redirects.Drivers;
+using Etch.OrchardCore.SEO.Redirects.Handlers;
+using Etch.OrchardCore.SEO.Redirects.Indexes;
+using Etch.OrchardCore.SEO.Redirects.Models;
+using Etch.OrchardCore.SEO.Redirects.Services;
 using OrchardCore.Autoroute.Model;
 using OrchardCore.Autoroute.Routing;
 using OrchardCore.ContentManagement;
@@ -18,9 +18,9 @@ using System.Linq;
 using YesSql;
 using YesSql.Indexes;
 
-namespace Moov2.OrchardCore.SEO.Redirects
+namespace Etch.OrchardCore.SEO.Redirects
 {
-    [Feature("Moov2.OrchardCore.SEO.Redirects")]
+    [Feature("Etch.OrchardCore.SEO.Redirects")]
     public class Startup : StartupBase
     {
         public override void ConfigureServices(IServiceCollection services)

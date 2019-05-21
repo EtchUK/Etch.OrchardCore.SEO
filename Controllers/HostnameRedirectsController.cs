@@ -3,9 +3,9 @@ using OrchardCore.Modules;
 using OrchardCore.Settings;
 using System.Net.Mime;
 
-namespace Moov2.OrchardCore.SEO.Controllers
+namespace Etch.OrchardCore.SEO.Controllers
 {
-    [Feature("Moov2.OrchardCore.SEO.HostnameRedirects")]
+    [Feature("Etch.OrchardCore.SEO.HostnameRedirects")]
     public class HostnameRedirectsController : Controller
     {
         #region Dependencies

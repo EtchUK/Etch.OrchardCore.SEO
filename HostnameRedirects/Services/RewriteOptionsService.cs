@@ -1,12 +1,12 @@
 ﻿using Castle.Core.Logging;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Net.Http.Headers;
-using Moov2.OrchardCore.SEO.HostnameRedirects.Models;
+using Etch.OrchardCore.SEO.HostnameRedirects.Models;
 using System;
 using System.Linq;
 using System.Net;
 
-namespace Moov2.OrchardCore.SEO.HostnameRedirects.Services {
+namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
     public class RewriteOptionsService : IRewriteOptionsSevice, IRule {
 
         #region Dependencies

@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Moov2.OrchardCore.SEO.HostnameRedirects.Models;
-using Moov2.OrchardCore.SEO.HostnameRedirects.ViewModels;
+using Etch.OrchardCore.SEO.HostnameRedirects.Models;
+using Etch.OrchardCore.SEO.HostnameRedirects.ViewModels;
 using OrchardCore.DisplayManagement.Entities;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Settings;
 using System.Threading.Tasks;
 
-namespace Moov2.OrchardCore.SEO.HostnameRedirects.Drivers
+namespace Etch.OrchardCore.SEO.HostnameRedirects.Drivers
 {
     public class HostnameRedirectsSettingsDisplayDriver :  SectionDisplayDriver<ISite, HostnameRedirectsSettings>
     {

@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Moov2.OrchardCore.SEO.RobotsTxt.Models;
-using Moov2.OrchardCore.SEO.RobotsTxt.ViewModels;
+using Etch.OrchardCore.SEO.RobotsTxt.Models;
+using Etch.OrchardCore.SEO.RobotsTxt.ViewModels;
 using OrchardCore.DisplayManagement.Entities;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Settings;
 using System.Threading.Tasks;
 
-namespace Moov2.OrchardCore.SEO.RobotsTxt.Drivers
+namespace Etch.OrchardCore.SEO.RobotsTxt.Drivers
 {
     public class RobotsTxtSettingsDisplayDriver :  SectionDisplayDriver<ISite, RobotsTxtSettings>
     {

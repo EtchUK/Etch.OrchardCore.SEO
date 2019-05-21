@@ -2,13 +2,13 @@ using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
     Name = "SEO",
-    Author = "Moov2",
-    Website = "https://moov2.com",
+    Author = "Etch",
+    Website = "https://etchuk.com",
     Version = "0.3.2"
 )]
 
 [assembly: Feature(
-    Id = "Moov2.OrchardCore.SEO.Redirects",
+    Id = "Etch.OrchardCore.SEO.Redirects",
     Name = "Redirects",
     Description = "Create 301 redirects.",
     Dependencies = new[]
@@ -19,7 +19,7 @@ using OrchardCore.Modules.Manifest;
 )]
 
 [assembly: Feature(
-    Id = "Moov2.OrchardCore.SEO.RobotsTxt",
+    Id = "Etch.OrchardCore.SEO.RobotsTxt",
     Name = "Robots.txt",
     Description = "Manage contents of robots.txt.",
     Category = "Content"
@@ -27,7 +27,7 @@ using OrchardCore.Modules.Manifest;
 
 
 [assembly: Feature(
-    Id = "Moov2.OrchardCore.SEO.HostnameRedirects",
+    Id = "Etch.OrchardCore.SEO.HostnameRedirects",
     Name = "Hostname Redirects",
     Description = "Manage hostname redirects.",
     Category = "Content"

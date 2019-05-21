@@ -1,8 +1,8 @@
-﻿using Moov2.OrchardCore.SEO.Redirects.Models;
+﻿using Etch.OrchardCore.SEO.Redirects.Models;
 using OrchardCore.ContentManagement;
 using YesSql.Indexes;
 
-namespace Moov2.OrchardCore.SEO.Redirects.Indexes
+namespace Etch.OrchardCore.SEO.Redirects.Indexes
 {
     public class RedirectPartIndex : MapIndex
     {

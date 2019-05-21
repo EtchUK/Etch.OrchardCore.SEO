@@ -1,10 +1,10 @@
-﻿using Moov2.OrchardCore.SEO.Redirects.Drivers;
-using Moov2.OrchardCore.SEO.Redirects.Indexes;
+﻿using Etch.OrchardCore.SEO.Redirects.Drivers;
+using Etch.OrchardCore.SEO.Redirects.Indexes;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 
-namespace Moov2.OrchardCore.SEO.Redirects
+namespace Etch.OrchardCore.SEO.Redirects
 {
     public class Migrations : DataMigration
     {

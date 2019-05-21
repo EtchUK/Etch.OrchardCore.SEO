@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Moov2.OrchardCore.SEO.Redirects.ViewModels
+namespace Etch.OrchardCore.SEO.Redirects.ViewModels
 {
     public class RedirectPartEditViewModel
     {

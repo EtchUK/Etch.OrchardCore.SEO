@@ -1,4 +1,4 @@
-﻿namespace Moov2.OrchardCore.SEO.HostnameRedirects.ViewModels
+﻿namespace Etch.OrchardCore.SEO.HostnameRedirects.ViewModels
 {
     public class HostnameRedirectsSettingsViewModel
     {

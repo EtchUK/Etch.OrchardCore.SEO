@@ -1,7 +1,7 @@
 ﻿using OrchardCore.ContentManagement;
 using System.ComponentModel.DataAnnotations;
 
-namespace Moov2.OrchardCore.SEO.Redirects.Models
+namespace Etch.OrchardCore.SEO.Redirects.Models
 {
     public class RedirectPart : ContentPart
     {

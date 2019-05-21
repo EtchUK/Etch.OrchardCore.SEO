@@ -1,6 +1,6 @@
 ﻿using OrchardCore.Autoroute.Model;
 
-namespace Moov2.OrchardCore.SEO.Redirects.Services
+namespace Etch.OrchardCore.SEO.Redirects.Services
 {
     public static class RedirectEntriesExtensions
     {

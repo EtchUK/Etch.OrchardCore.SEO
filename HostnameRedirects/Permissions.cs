@@ -1,7 +1,7 @@
 ﻿using OrchardCore.Security.Permissions;
 using System.Collections.Generic;
 
-namespace Moov2.OrchardCore.SEO.HostnameRedirects
+namespace Etch.OrchardCore.SEO.HostnameRedirects
 {
     public class Permissions : IPermissionProvider
     {

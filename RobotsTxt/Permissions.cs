@@ -1,7 +1,7 @@
 ﻿using OrchardCore.Security.Permissions;
 using System.Collections.Generic;
 
-namespace Moov2.OrchardCore.SEO.RobotsTxt
+namespace Etch.OrchardCore.SEO.RobotsTxt
 {
     public class Permissions : IPermissionProvider
     {
