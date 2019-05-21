@@ -3,6 +3,9 @@ pool:
 variables:
   BuildConfiguration: 'Release'
 
+trigger: none
+pr: none
+
 steps:
 - task: tmarkovski.projectversionasvariable.versionintovariable.projectversionasvariable@1
   displayName: 'Get Project Version as variables from Etch.OrchardCore.SEO.csproj'
