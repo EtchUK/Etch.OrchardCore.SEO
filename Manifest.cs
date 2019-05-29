@@ -34,7 +34,7 @@ using OrchardCore.Modules.Manifest;
 )]
 
 [assembly: Feature(
-    Id = "Moov2.OrchardCore.SEO.MetaTags",
+    Id = "Etch.OrchardCore.SEO.MetaTags",
     Name = "Meta Tags",
     Dependencies = new[]
     {
