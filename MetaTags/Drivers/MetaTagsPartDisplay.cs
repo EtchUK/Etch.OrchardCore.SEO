@@ -49,7 +49,7 @@ namespace Moov2.OrchardCore.SEO.MetaTags.Drivers
             return Initialize<MetaTagsPartViewModel>("MetaTagsPart_Edit", model =>
             {
                 model.Description = metaTagsPart.Description;
-                model.Images = JsonConvert.SerializeObject(metaTagsPart.Images.Select(x => new MetaTagImage { Path = x }).ToList());
+                model.Images = JsonConvert.SerializeObject(metaTagsPart.Images?.Select(x => new MetaTagImage { Path = x }).ToList() ?? new List<MetaTagImage>());
                 model.Title = metaTagsPart.Title;
                 return Task.CompletedTask;
             });

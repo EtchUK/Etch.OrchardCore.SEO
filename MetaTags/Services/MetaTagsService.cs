@@ -57,7 +57,7 @@ namespace Moov2.OrchardCore.SEO.MetaTags.Services
                 _resourceManager.RegisterMeta(new MetaEntry { Name = "og:description", Content = metaTags.Description });
             }
 
-            if (metaTags.Images.Any())
+            if (metaTags.Images != null && metaTags.Images.Any())
             {
                 _resourceManager.RegisterMeta(new MetaEntry { Name = "og:image", Content = $"{GetHostUrl()}{_mediaFileStore.MapPathToPublicUrl(metaTags.Images[0])}" });
             }
@@ -78,7 +78,7 @@ namespace Moov2.OrchardCore.SEO.MetaTags.Services
                 _resourceManager.RegisterMeta(new MetaEntry { Name = "twitter:description", Content = metaTags.Description });
             }
 
-            if (metaTags.Images.Any())
+            if (metaTags.Images != null && metaTags.Images.Any())
             {
                 _resourceManager.RegisterMeta(new MetaEntry { Name = "twitter:image", Content = $"{GetHostUrl()}{_mediaFileStore.MapPathToPublicUrl(metaTags.Images[0])}" });
             }
