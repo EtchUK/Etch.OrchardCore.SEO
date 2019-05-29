@@ -1,23 +1,26 @@
 ﻿@model Moov2.OrchardCore.SEO.MetaTags.ViewModels.MetaTagsPartViewModel
 
+<script asp-src="~/Moov2.OrchardCore.SEO/Scripts/metaTags/admin.js" asp-name="metaTags" at="Foot"></script>
 <script asp-src="~/OrchardCore.Media/Scripts/media.js" asp-name="media" at="Foot" depends-on="admin, vuejs, sortable, vuedraggable"></script>
 <style asp-src="~/OrchardCore.Media/Styles/media.min.css" debug-src="~/OrchardCore.Media/Styles/media.css"></style>
 <script asp-src="https://vuejs.org/js/vue.min.js" debug-src="https://vuejs.org/js/vue.js" asp-name="vuejs" at="Foot"></script>
 <script asp-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js" debug-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.js" asp-name="sortable" at="Foot"></script>
 <script asp-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js" debug-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js" asp-name="vuedraggable" depends-on="vuejs, sortable" at="Foot"></script>
 
-<h5>
-    Meta Tags <span class="hint">— Manage content for SEO and social media sharing</span>
-</h5>
-
 <script at="Foot">
     initializeMediaApplication(false, '@Url.Action("MediaApplication", "Admin", new { area = "OrchardCore.Media" })');
-    initializeMediaFieldEditor(
+    initializeMediaField(
         document.getElementById('@Html.IdFor(m => m)-Images'),
         document.getElementById('@Html.IdFor(m => m.Images)-ModalBody'),
         '@Url.Action("GetMediaItem", "Admin", new { area = "OrchardCore.Media" })',
         false);
 </script>
+
+<h5>
+    Meta Tags <span class="hint">— Manage content for SEO and social media sharing</span>
+</h5>
+
+<p class="hint">Once published, use <a href="https://metatags.io">https://metatags.io</a> to see a preview how your webpage will look on Google, Facebook, Twitter and more!</p>
 
 <input type="hidden" id="onlyOneItemMessage" value="@T["Only one item is allowed on this field."]" />
 
@@ -25,7 +28,6 @@
     <div class="media-field">
         <fieldset class="form-group">
             <label asp-for="Images">Image</label>
-            <span class="hint">Info about ideal dimensions...</span>
 
             <input asp-for="Images" type="hidden" class="paths" :value="paths" data-init="@Model.Images" />
 
