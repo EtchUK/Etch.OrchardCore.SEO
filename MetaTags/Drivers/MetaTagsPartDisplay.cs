@@ -3,6 +3,7 @@ using Moov2.OrchardCore.SEO.MetaTags.Services;
 using Moov2.OrchardCore.SEO.MetaTags.ViewModels;
 using Newtonsoft.Json;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
+using OrchardCore.ContentManagement.Display.Models;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
 using System;
@@ -31,8 +32,13 @@ namespace Moov2.OrchardCore.SEO.MetaTags.Drivers
 
         #region Overrides
 
-        public override IDisplayResult Display(MetaTagsPart metaTagsPart)
+        public override IDisplayResult Display(MetaTagsPart metaTagsPart, BuildPartDisplayContext context)
         {
+            if (context.DisplayType != "Detail")
+            {
+                return null;
+            }
+
             _metaTagsService.RegisterDefaults(metaTagsPart);
             _metaTagsService.RegisterOpenGraph(metaTagsPart);
             _metaTagsService.RegisterTwitter(metaTagsPart);
