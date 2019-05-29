@@ -1,6 +1,6 @@
-﻿using Moov2.OrchardCore.SEO.MetaTags.Models;
+﻿using Etch.OrchardCore.SEO.MetaTags.Models;
 
-namespace Moov2.OrchardCore.SEO.MetaTags.Services
+namespace Etch.OrchardCore.SEO.MetaTags.Services
 {
     public interface IMetaTagsService
     {

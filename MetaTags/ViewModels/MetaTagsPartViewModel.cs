@@ -1,4 +1,4 @@
-﻿namespace Moov2.OrchardCore.SEO.MetaTags.ViewModels
+﻿namespace Etch.OrchardCore.SEO.MetaTags.ViewModels
 {
     public class MetaTagsPartViewModel
     {

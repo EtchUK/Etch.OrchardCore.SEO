@@ -1,6 +1,6 @@
-﻿using Moov2.OrchardCore.SEO.MetaTags.Models;
-using Moov2.OrchardCore.SEO.MetaTags.Services;
-using Moov2.OrchardCore.SEO.MetaTags.ViewModels;
+﻿using Etch.OrchardCore.SEO.MetaTags.Models;
+using Etch.OrchardCore.SEO.MetaTags.Services;
+using Etch.OrchardCore.SEO.MetaTags.ViewModels;
 using Newtonsoft.Json;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentManagement.Display.Models;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Moov2.OrchardCore.SEO.MetaTags.Drivers
+namespace Etch.OrchardCore.SEO.MetaTags.Drivers
 {
     public class MetaTagsPartDisplay : ContentPartDisplayDriver<MetaTagsPart>
     {

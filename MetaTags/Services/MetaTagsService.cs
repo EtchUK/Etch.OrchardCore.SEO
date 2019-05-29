@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Moov2.OrchardCore.SEO.MetaTags.Models;
+using Etch.OrchardCore.SEO.MetaTags.Models;
 using OrchardCore.Media;
 using OrchardCore.ResourceManagement;
 using System.Linq;
 
-namespace Moov2.OrchardCore.SEO.MetaTags.Services
+namespace Etch.OrchardCore.SEO.MetaTags.Services
 {
     public class MetaTagsService : IMetaTagsService
     {

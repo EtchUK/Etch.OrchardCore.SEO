@@ -2,7 +2,7 @@
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.Data.Migration;
 
-namespace Moov2.OrchardCore.SEO.MetaTags
+namespace Etch.OrchardCore.SEO.MetaTags
 {
     public class Migrations : DataMigration
     {

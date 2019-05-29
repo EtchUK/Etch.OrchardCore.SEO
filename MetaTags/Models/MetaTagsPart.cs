@@ -1,6 +1,6 @@
 ﻿using OrchardCore.ContentManagement;
 
-namespace Moov2.OrchardCore.SEO.MetaTags.Models
+namespace Etch.OrchardCore.SEO.MetaTags.Models
 {
     public class MetaTagsPart : ContentPart
     {

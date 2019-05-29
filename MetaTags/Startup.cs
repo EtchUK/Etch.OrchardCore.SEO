@@ -1,17 +1,17 @@
 ﻿using Fluid;
 using Microsoft.Extensions.DependencyInjection;
-using Moov2.OrchardCore.SEO.MetaTags.Drivers;
-using Moov2.OrchardCore.SEO.MetaTags.Models;
-using Moov2.OrchardCore.SEO.MetaTags.Services;
-using Moov2.OrchardCore.SEO.MetaTags.ViewModels;
+using Etch.OrchardCore.SEO.MetaTags.Drivers;
+using Etch.OrchardCore.SEO.MetaTags.Models;
+using Etch.OrchardCore.SEO.MetaTags.Services;
+using Etch.OrchardCore.SEO.MetaTags.ViewModels;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.Data.Migration;
 using OrchardCore.Modules;
 
-namespace Moov2.OrchardCore.SEO.MetaTags
+namespace Etch.OrchardCore.SEO.MetaTags
 {
-    [Feature("Moov2.OrchardCore.SEO.MetaTags")]
+    [Feature("Etch.OrchardCore.SEO.MetaTags")]
     public class Startup : StartupBase
     {
         static Startup()
