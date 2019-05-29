@@ -1,3 +1,3 @@
 ﻿(() => {
-    console.log('Hello world!');
+    
 })();

@@ -55,7 +55,7 @@ namespace Moov2.OrchardCore.SEO.MetaTags.Drivers
             return Initialize<MetaTagsPartViewModel>("MetaTagsPart_Edit", model =>
             {
                 model.Description = metaTagsPart.Description;
-                model.Images = JsonConvert.SerializeObject(metaTagsPart.Images?.Select(x => new MetaTagImage { Path = x }).ToList() ?? new List<MetaTagImage>());
+                model.Images = JsonConvert.SerializeObject(metaTagsPart.Images?.ToList() ?? new List<string>());
                 model.Title = metaTagsPart.Title;
                 return Task.CompletedTask;
             });
@@ -72,7 +72,7 @@ namespace Moov2.OrchardCore.SEO.MetaTags.Drivers
 
                 part.Images = string.IsNullOrWhiteSpace(model.Images)
                     ? Array.Empty<string>()
-                    : JsonConvert.DeserializeObject<IList<MetaTagImage>>(model.Images).Select(x => x.Path).ToArray();
+                    : JsonConvert.DeserializeObject<IList<string>>(model.Images).ToArray();
 
             }
 
