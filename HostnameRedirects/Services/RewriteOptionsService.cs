@@ -5,6 +5,7 @@ using Etch.OrchardCore.SEO.HostnameRedirects.Models;
 using System;
 using System.Linq;
 using System.Net;
+using OrchardCore.Admin;
 
 namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
     public class RewriteOptionsService : IRewriteOptionsSevice, IRule {
@@ -37,7 +38,7 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
 
             var url = GetURL(context);
 
-            if (CheckIfIgnored(hostnameRedirectsSettings, url)) {
+            if (CheckIfIgnored(hostnameRedirectsSettings, url) || context.HttpContext.Request.Method.ToLower() != "get") {
                 context.Result = RuleResult.ContinueRules;
                 return;
             }
@@ -47,7 +48,7 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
             consistentRequest = ValidateNonWWW(hostnameRedirectsSettings, consistentRequest);
             consistentRequest = ValidateSSL(hostnameRedirectsSettings, consistentRequest);
             consistentRequest = ValidateRedirectToSiteUrl(hostnameRedirectsSettings, consistentRequest);
-
+            consistentRequest = ValidateTrailingSlashes(hostnameRedirectsSettings, consistentRequest);
 
             if (!consistentRequest.ToString().Equals(url)) {
                 var response = context.HttpContext.Response;
@@ -132,6 +133,43 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
 
             var builder = new UriBuilder(uri);
             builder.Host = requestedUri.Host;
+            return builder.Uri;
+        }
+
+        private Uri ValidateTrailingSlashes(HostnameRedirectsSettings settings, Uri uri)
+        {
+            if (settings.TrailingSlashes == TrailingSlashesModes.None)
+            {
+                return uri;
+            }
+
+            var lastSegment = uri.Segments.Last();
+
+            // ignore as request is for homepage.
+            if (lastSegment == "/")
+            {
+                return uri;
+            }
+
+            var endsWith = lastSegment.EndsWith("/");
+
+            if ((endsWith && settings.TrailingSlashes == TrailingSlashesModes.Append) || (!endsWith && settings.TrailingSlashes == TrailingSlashesModes.Remove))
+            {
+                return uri;
+            }
+
+            var builder = new UriBuilder(uri);
+
+            if (settings.TrailingSlashes == TrailingSlashesModes.Append)
+            {
+                builder.Path += "/";
+            }
+
+            if (settings.TrailingSlashes == TrailingSlashesModes.Remove)
+            {
+                builder.Path = builder.Path.Substring(0, builder.Path.Length - 1);
+            }
+
             return builder.Uri;
         }
 

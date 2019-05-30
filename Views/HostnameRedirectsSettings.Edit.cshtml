@@ -6,7 +6,7 @@
 <fieldset class="form-group" asp-validation-class-for="ForceSSL">
     <div class="custom-control custom-checkbox">
         <input asp-for="ForceSSL" type="checkbox" class="custom-control-input">
-        <label class="custom-control-label" asp-for="ForceSSL">@T["Force SSL"]</label><br/>
+        <label class="custom-control-label" asp-for="ForceSSL">@T["Force SSL"]</label><br />
         <span class="hint">@T["Force visitors to use SSL (https). This is a basic implementation that will change the URL from http to https."]</span>
     </div>
 </fieldset>
@@ -29,6 +29,17 @@
 <fieldset class="form-group js-redirect-to-site-field" asp-validation-class-for="RedirectToSiteUrl" style="display: none;">
     <label asp-for="RedirectToSiteUrl">@T["Redirect to Domain"] <span asp-validation-for="RedirectToSiteUrl"></span></label>
     <input asp-for="RedirectToSiteUrl" class="form-control content-preview-text content-caption-text" placeholder="E.g. https://domain.example.com" />
+</fieldset>
+
+<hr />
+
+<fieldset class="form-group">
+    <label asp-for="TrailingSlashes">@T["Trailing Slashes"]</label>
+    <select asp-for="TrailingSlashes" class="form-control content-preview-select">
+        <option value="@TrailingSlashesModes.None">@T["Ignore"]</option>
+        <option value="@TrailingSlashesModes.Remove">@T["Remove Trailing Slash"]</option>
+        <option value="@TrailingSlashesModes.Append">@T["Append Trailing Slash"]</option>
+    </select>
 </fieldset>
 
 <hr />
