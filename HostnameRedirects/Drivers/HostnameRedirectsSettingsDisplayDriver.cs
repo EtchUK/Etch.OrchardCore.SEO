@@ -52,6 +52,7 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Drivers
                 model.ForceSSL = settings.ForceSSL;
                 model.RedirectToSiteUrl = settings.RedirectToSiteUrl;
                 model.IgnoredUrls = settings.IgnoredUrls;
+                model.TrailingSlashes = settings.TrailingSlashes;
             }).Location("Content:3").OnGroup(GroupId);
         }
 
@@ -74,6 +75,7 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Drivers
                 settings.ForceSSL = model.ForceSSL;
                 settings.RedirectToSiteUrl = model.RedirectToSiteUrl;
                 settings.IgnoredUrls = model.IgnoredUrls;
+                settings.TrailingSlashes = model.TrailingSlashes;
             }
 
             return await EditAsync(settings, context);
