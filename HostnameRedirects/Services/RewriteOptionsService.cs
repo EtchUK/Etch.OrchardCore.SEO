@@ -77,6 +77,11 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
             return settings.IgnoredUrls.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).Any(x => url.StartsWith(x));
         }
 
+        private bool IsStaticFile(string path)
+        {
+            return path.Contains(".");
+        }
+
         private Uri ValidateWWW(HostnameRedirectsSettings settings, Uri url) {
             if (settings.Redirect != HostnameRedirectModes.NonWWW) {
                 return url;
@@ -146,7 +151,7 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
             var lastSegment = uri.Segments.Last();
 
             // ignore as request is for homepage.
-            if (lastSegment == "/")
+            if (lastSegment == "/" || IsStaticFile(lastSegment))
             {
                 return uri;
             }
