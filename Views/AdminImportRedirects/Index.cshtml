@@ -1,0 +1,18 @@
+﻿@model Etch.OrchardCore.SEO.Redirects.Import.ViewModels.ImportRedirectsIndexViewModel
+
+<h1>@T["Import Redirects"]</h1>
+
+<p>@T["Quickly add Redirects to the site by uploading an XLSX spreadsheet. Redirects will be imported as permanent."]</p>
+
+<div class="mb-4">
+    <a href="~/Etch.OrchardCore.SEO/Downloads/ImportRedirectTemplate.xlsx" target="_blank" class="btn btn-primary" role="button">@T["Download template"]</a>
+</div>
+
+<form asp-action="Import" enctype="multipart/form-data">
+    <div class="form-group">
+        @Html.EditorFor(m => m.ImportedRedirectsFile, new { htmlAttributes = new { @class = "form-control-file" } })
+        @Html.ValidationMessageFor(m => m.ImportedRedirectsFile)
+    </div>
+
+    <button class="btn btn-primary" type="submit">@T["Import"]</button>
+</form>
