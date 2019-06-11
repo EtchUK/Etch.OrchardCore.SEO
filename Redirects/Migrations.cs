@@ -1,5 +1,6 @@
 ﻿using Etch.OrchardCore.SEO.Redirects.Drivers;
 using Etch.OrchardCore.SEO.Redirects.Indexes;
+using Etch.OrchardCore.SEO.Redirects.Validation;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
@@ -33,7 +34,7 @@ namespace Etch.OrchardCore.SEO.Redirects
         {
             SchemaBuilder.CreateMapIndexTable(nameof(RedirectPartIndex), table => table
                 .Column<string>("ContentItemId", c => c.WithLength(26))
-                .Column<string>("Url", col => col.WithLength(RedirectPartDisplay.MaxPathLength))
+                .Column<string>("Url", col => col.WithLength(UrlValidation.MaxPathLength))
                 .Column<bool>("Published")
             );
 

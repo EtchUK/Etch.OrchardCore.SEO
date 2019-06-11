@@ -19,6 +19,17 @@ using OrchardCore.Modules.Manifest;
 )]
 
 [assembly: Feature(
+    Id = "Etch.OrchardCore.SEO.Redirects.Import",
+    Name = "Import Redirects",
+    Description = "Import 301 redirects from a spreadsheet.",
+    Dependencies = new[]
+    {
+        "Etch.OrchardCore.SEO.Redirects"
+    },
+    Category = "Content"
+)]
+
+[assembly: Feature(
     Id = "Etch.OrchardCore.SEO.RobotsTxt",
     Name = "Robots.txt",
     Description = "Manage contents of robots.txt.",
