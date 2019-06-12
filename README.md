@@ -16,10 +16,6 @@ This module is referencing the beta 3 build of Orchard Core ([`1.0.0-beta3-71077
 
 Define main hostname to redirect all domain variations and force SSL.
 
-#### Import
-
-This feature adds the ability to bulk import hostname redirects from an XLSX file.
-
 ### Meta Tags
 
 Attach content part that gives content editors ability to manage basic meta tags (inspired by [metatags.io](https://metatags.io)).
@@ -29,6 +25,10 @@ Attach content part that gives content editors ability to manage basic meta tags
 ### Redirects
 
 Create redirect content items that'll redirect a relative URL to another URL.
+
+#### Import
+
+This feature adds the ability to bulk import redirects from an XLSX file.
 
 ### Robots.txt
 
