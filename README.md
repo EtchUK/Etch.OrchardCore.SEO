@@ -20,6 +20,22 @@ Define main hostname to redirect all domain variations and force SSL.
 
 Attach content part that gives content editors ability to manage basic meta tags (inspired by [metatags.io](https://metatags.io)).
 
+#### Known Issues
+
+When using this module you may notice the page title will include the display text for the content item as well as the value defined in the title field. This is because the [`ContentsMetadata`](https://github.com/OrchardCMS/OrchardCore/blob/dev/src/OrchardCore.Modules/OrchardCore.Contents/Views/ContentsMetadata.cshtml) shape within Orchard Core will automatically add the display text for a content item to a page title. The work around is to override the `ContentsMetadata` shape within your theme. Below is the Razor template that will set the page title to the value entered in the meta tag title field. When the content type doesn't have the `MetaTagsPart` attached or no value has been defined within the title field the default approach of using the display text for the content item is used.
+
+```
+@using OrchardCore.ContentManagement
+
+@{
+    ContentItem contentItem = Model.ContentItem;
+
+    if (Model.ContentItem.Content.MetaTagsPart == null || string.IsNullOrWhiteSpace((string)Model.ContentItem.Content.MetaTagsPart.Title)) {
+        Title.AddSegment(Html.Raw(Html.Encode(contentItem.DisplayText)));
+    }
+}
+```
+
 *Under development*
 
 ### Redirects
