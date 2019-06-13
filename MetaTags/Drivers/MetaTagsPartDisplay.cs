@@ -47,7 +47,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Drivers
             {
                 model.Title = metaTagsPart.Title;
             })
-            .Location("Detail", "Header:1");
+            .Location("Detail", "Content:1");
         }
 
         public override IDisplayResult Edit(MetaTagsPart metaTagsPart)
