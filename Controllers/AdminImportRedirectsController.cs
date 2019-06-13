@@ -74,11 +74,11 @@ namespace Etch.OrchardCore.SEO.Controllers
 
             var result = await _importRedirectsService.ImportRedirectsAsync(rows);
 
-            _notifier.Success(T["Successfully imported {0} Redirects", result.Success]);
+            _notifier.Success(T["Successfully imported {0} redirects,", result.Success]);
 
             if (result.Skipped.Any())
             {
-                _notifier.Warning(T["Skipped rows {0}", string.Join(", ", result.Skipped)]);
+                _notifier.Warning(T["Skipped rows {0}.", string.Join(", ", result.Skipped)]);
             }
 
             return RedirectToAction(nameof(Index));
