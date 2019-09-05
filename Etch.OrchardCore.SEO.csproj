@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.4.2-beta</Version>
+    <Version>0.4.3-beta</Version>
     <PackageId>Etch.OrchardCore.SEO</PackageId>
     <Title>Etch OrchardCore SEO</Title>
     <Authors>Etch</Authors>

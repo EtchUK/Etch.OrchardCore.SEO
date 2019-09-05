@@ -59,7 +59,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
 
             if (metaTags.Images != null && metaTags.Images.Any())
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "og:image", Content = $"{GetHostUrl()}{_mediaFileStore.MapPathToPublicUrl(metaTags.Images[0])}" });
+                _resourceManager.RegisterMeta(new MetaEntry { Name = "og:image", Content = GetMediaUrl(metaTags.Images[0]) });
             }
         }
 
@@ -80,7 +80,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
 
             if (metaTags.Images != null && metaTags.Images.Any())
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "twitter:image", Content = $"{GetHostUrl()}{_mediaFileStore.MapPathToPublicUrl(metaTags.Images[0])}" });
+                _resourceManager.RegisterMeta(new MetaEntry { Name = "twitter:image", Content = GetMediaUrl(metaTags.Images[0]) });
             }
         }
 
@@ -92,6 +92,12 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
         {
             var request = _httpContextAccessor.HttpContext.Request;
             return $"{request.Scheme}://{request.Host}";
+        }
+
+        public string GetMediaUrl(string path)
+        {
+            var imageUrl = _mediaFileStore.MapPathToPublicUrl(path);
+            return imageUrl.StartsWith("http") ? imageUrl : $"{GetHostUrl()}{imageUrl}";
         }
 
         private string GetPageUrl()
