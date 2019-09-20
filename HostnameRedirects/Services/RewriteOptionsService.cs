@@ -72,7 +72,7 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
         }
 
         private bool CheckIfIgnored(HostnameRedirectsSettings settings, string url) {
-            if(IsAdmin(url))
+            if (IsAdmin(url))
             {
                 return true;
             }
