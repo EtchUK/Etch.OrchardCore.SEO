@@ -50,10 +50,12 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
             consistentRequest = ValidateRedirectToSiteUrl(hostnameRedirectsSettings, consistentRequest);
             consistentRequest = ValidateTrailingSlashes(hostnameRedirectsSettings, consistentRequest);
 
-            if (!consistentRequest.ToString().Equals(url)) {
+            var consistentRequestUrl = WebUtility.UrlDecode(consistentRequest.ToString());
+
+            if (!consistentRequestUrl.Equals(url)) {
                 var response = context.HttpContext.Response;
                 response.StatusCode = StatusCode;
-                response.Headers[HeaderNames.Location] = consistentRequest.ToString();
+                response.Headers[HeaderNames.Location] = consistentRequestUrl;
                 context.Result = RuleResult.EndResponse;
                 return;
             }
@@ -66,7 +68,7 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
         private string GetURL(RewriteContext context) {
             var request = context.HttpContext.Request;
 
-            return $"{request.Scheme}://{request.Host.Value}{request.PathBase}{request.Path}{request.QueryString}";
+            return WebUtility.UrlDecode($"{request.Scheme}://{request.Host.Value}{request.PathBase}{request.Path}{request.QueryString}");
         }
 
         private bool CheckIfIgnored(HostnameRedirectsSettings settings, string url) {
