@@ -72,6 +72,11 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
         }
 
         private bool CheckIfIgnored(HostnameRedirectsSettings settings, string url) {
+            if(IsAdmin(url))
+            {
+                return true;
+            }
+
             if (string.IsNullOrWhiteSpace(settings.IgnoredUrls)) {
                 return false;
             }
@@ -79,8 +84,18 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
             return settings.IgnoredUrls.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).Any(x => url.StartsWith(x));
         }
 
-        private bool IsStaticFile(string path)
-        {
+        private bool IsAdmin(string url) {
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                return false;
+            }
+
+            var lowerUrl = url.ToLower();
+
+            return lowerUrl.EndsWith("/admin") || lowerUrl.Contains("/admin/");
+        }
+
+        private bool IsStaticFile(string path) {
             return path.Contains(".");
         }
 
@@ -143,8 +158,7 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
             return builder.Uri;
         }
 
-        private Uri ValidateTrailingSlashes(HostnameRedirectsSettings settings, Uri uri)
-        {
+        private Uri ValidateTrailingSlashes(HostnameRedirectsSettings settings, Uri uri) {
             if (settings.TrailingSlashes == TrailingSlashesModes.None)
             {
                 return uri;
