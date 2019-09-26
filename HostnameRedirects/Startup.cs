@@ -16,7 +16,8 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects {
     [Feature("Etch.OrchardCore.SEO.HostnameRedirects")]
     public class Startup : StartupBase
     {
-        public override void ConfigureServices(IServiceCollection services) {
+        public override void ConfigureServices(IServiceCollection services)
+        {
             services.AddScoped<INavigationProvider, AdminMenu>();
             services.AddScoped<IDisplayDriver<ISite>, HostnameRedirectsSettingsDisplayDriver>();
             services.AddScoped<IPermissionProvider, Permissions>();
@@ -26,14 +27,14 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects {
 
         }
 
-        public override void Configure(IApplicationBuilder app, IRouteBuilder routes, IServiceProvider serviceProvider) {
+        public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
+        { 
             var rewriteOptionsService = app.ApplicationServices.GetService<IRewriteOptionsSevice>();
 
             var rewriteOptions = new RewriteOptions();
             rewriteOptions.Add((IRule)rewriteOptionsService);
 
             app.UseRewriter(rewriteOptions);
-
         }
     }
 }

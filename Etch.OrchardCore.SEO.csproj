@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>0.4.4-beta</Version>
     <PackageId>Etch.OrchardCore.SEO</PackageId>
@@ -15,19 +16,19 @@
 
   <ItemGroup>
     <PackageReference Include="FluentExcel" Version="2.2.0" />
-    <PackageReference Include="OrchardCore.Admin" Version="1.0.0-beta3-71077" />
-    <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-beta3-71077" />
-    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta3-71077" />
-    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-beta3-71077" />
-    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-beta3-71077" />
-    <PackageReference Include="OrchardCore.Media.Services" Version="1.0.0-beta3-71077" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta3-71077" />
-    <PackageReference Include="OrchardCore.Navigation.Core" Version="1.0.0-beta3-71077" />
-    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-beta3-71077" />
+    <PackageReference Include="OrchardCore.Admin" Version="1.0.0-rc1-10004" />
+    <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-rc1-10004" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-rc1-10004" />
+    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-rc1-10004" />
+    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-rc1-10004" />
+    <PackageReference Include="OrchardCore.Media.Services" Version="1.0.0-rc1-10004" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc1-10004" />
+    <PackageReference Include="OrchardCore.Navigation.Core" Version="1.0.0-rc1-10004" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-rc1-10004" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Rewrite" Version="2.2.0-preview3-35497" />
   </ItemGroup>
 
