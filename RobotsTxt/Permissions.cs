@@ -1,5 +1,7 @@
 ﻿using OrchardCore.Security.Permissions;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.SEO.RobotsTxt
 {
@@ -7,9 +9,9 @@ namespace Etch.OrchardCore.SEO.RobotsTxt
     {
         public static readonly Permission ManageRobotsTxt = new Permission("ManageRobotsTxt", "Manage robots.txt");
 
-        public IEnumerable<Permission> GetPermissions()
+        public Task<IEnumerable<Permission>> GetPermissionsAsync()
         {
-            return new[] { ManageRobotsTxt };
+            return Task.FromResult(new[] { ManageRobotsTxt }.AsEnumerable());
         }
 
         public IEnumerable<PermissionStereotype> GetDefaultStereotypes()

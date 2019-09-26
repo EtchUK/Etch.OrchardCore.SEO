@@ -21,12 +21,12 @@ namespace Etch.OrchardCore.SEO.RobotsTxt
             services.AddScoped<IPermissionProvider, Permissions>();
         }
 
-        public override void Configure(IApplicationBuilder app, IRouteBuilder routes, IServiceProvider serviceProvider)
+        public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
-            routes.MapAreaRoute(
+            routes.MapAreaControllerRoute(
                 name: "Robots.txt",
                 areaName: "Etch.OrchardCore.SEO",
-                template: "robots.txt",
+                pattern: "robots.txt",
                 defaults: new { controller = "RobotsTxt", action = "Index" }
             );
         }

@@ -28,7 +28,7 @@ namespace Etch.OrchardCore.SEO.Redirects.Handlers
 
         public override Task GetContentItemAspectAsync(ContentItemAspectContext context, RedirectPart part)
         {
-            context.For<ContentItemMetadata>(metadata =>
+            return context.ForAsync<ContentItemMetadata>(metadata =>
             {
                 if (metadata.DisplayRouteValues == null)
                 {
@@ -39,9 +39,9 @@ namespace Etch.OrchardCore.SEO.Redirects.Handlers
                         {"ContentItemId", context.ContentItem.ContentItemId}
                     };
                 }
-            });
 
-            return Task.CompletedTask;
+                return Task.CompletedTask;
+            });
         }
 
         public override Task PublishedAsync(PublishContentContext context, RedirectPart part)
