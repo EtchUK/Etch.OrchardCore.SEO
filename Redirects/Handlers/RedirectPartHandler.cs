@@ -26,24 +26,6 @@ namespace Etch.OrchardCore.SEO.Redirects.Handlers
 
         #region Overrides
 
-        public override Task GetContentItemAspectAsync(ContentItemAspectContext context, RedirectPart part)
-        {
-            return context.ForAsync<ContentItemMetadata>(metadata =>
-            {
-                if (metadata.DisplayRouteValues == null)
-                {
-                    metadata.DisplayRouteValues = new RouteValueDictionary {
-                        {"Area", "Etch.OrchardCore.SEO"},
-                        {"Controller", "Redirect"},
-                        {"Action", "Index"},
-                        {"ContentItemId", context.ContentItem.ContentItemId}
-                    };
-                }
-
-                return Task.CompletedTask;
-            });
-        }
-
         public override Task PublishedAsync(PublishContentContext context, RedirectPart part)
         {
             if (!string.IsNullOrWhiteSpace(part.FromUrl))

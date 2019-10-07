@@ -2,6 +2,7 @@ using Etch.OrchardCore.SEO.Redirects.Drivers;
 using Etch.OrchardCore.SEO.Redirects.Handlers;
 using Etch.OrchardCore.SEO.Redirects.Indexes;
 using Etch.OrchardCore.SEO.Redirects.Models;
+using Etch.OrchardCore.SEO.Redirects.Routing;
 using Etch.OrchardCore.SEO.Redirects.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
@@ -34,6 +35,8 @@ namespace Etch.OrchardCore.SEO.Redirects
             services.AddSingleton<IRedirectEntries, RedirectEntries>();
 
             services.AddScoped<IDataMigration, Migrations>();
+
+            services.AddSingleton<RedirectRouteTransformer>();
         }
 
         public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
@@ -43,6 +46,9 @@ namespace Etch.OrchardCore.SEO.Redirects
             var redirects = session.QueryIndex<RedirectPartIndex>(o => o.Published).ListAsync().GetAwaiter().GetResult();
 
             entries.AddEntries(redirects.Select(x => new AutorouteEntry { ContentItemId = x.ContentItemId, Path = x.Url }));
+
+            // The 1st segment prevents the transformer to be executed for the home.
+            routes.MapDynamicControllerRoute<RedirectRouteTransformer>("/{**slug}");
         }
     }
 }
