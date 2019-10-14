@@ -58,7 +58,8 @@ namespace Etch.OrchardCore.SEO.MetaTags.Drivers
                 model.Images = JsonConvert.SerializeObject(metaTagsPart.Images?.ToList() ?? new List<string>());
                 model.Title = metaTagsPart.Title;
                 return Task.CompletedTask;
-            });
+            })
+            .Location("Parts#SEO:10");
         }
 
         public override async Task<IDisplayResult> UpdateAsync(MetaTagsPart part, IUpdateModel updater)
