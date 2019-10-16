@@ -49,7 +49,8 @@ using OrchardCore.Modules.Manifest;
     Name = "Meta Tags",
     Dependencies = new[]
     {
-        "OrchardCore.Media"
+        "OrchardCore.Media",
+        "Etch.OrchardCore.Field.Dictionary"
     },
     Description = "Manage meta tags for content items.",
     Category = "Content"
