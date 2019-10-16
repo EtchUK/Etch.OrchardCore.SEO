@@ -29,6 +29,7 @@ namespace Etch.OrchardCore.SEO.MetaTags
             _contentDefinitionManager.AlterPartDefinition("MetaTagsPart", builder => builder
                 .WithField(Constants.CustomFieldName, field => field
                     .OfType(typeof(DictionaryField).Name)
+                    .WithDisplayName(Constants.CustomFieldName)
                     .WithSetting("Hint", "Apply custom meta tags that will override the defaults applied through defining image, title & description.")
                 )
             );
