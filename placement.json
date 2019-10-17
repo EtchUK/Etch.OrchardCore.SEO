@@ -4,5 +4,11 @@
       "place": "Actions:1",
       "contentPart": [ "MetaTagsPart" ]
     }
+  ],
+  "DictionaryField": [
+    {
+      "place": "-",
+      "contentPart": [ "MetaTagsPart" ]
+    }
   ]
 }
