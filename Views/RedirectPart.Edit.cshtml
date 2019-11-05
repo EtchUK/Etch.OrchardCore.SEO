@@ -4,7 +4,12 @@
 
 <fieldset class="form-group" asp-validation-class-for="FromUrl">
     <label asp-for="FromUrl">@T["From Url"] <span asp-validation-for="FromUrl"></span></label>
-    <input asp-for="FromUrl" class="form-control content-preview-text content-caption-text" />
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">@Model.TenantUrl</span>
+        </div>
+        <input asp-for="FromUrl" class="form-control content-preview-text content-caption-text" />
+    </div>
     <span class="hint">@T["Relative URL that triggers redirect."]</span>
 </fieldset>
 

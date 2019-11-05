@@ -1,4 +1,5 @@
 ﻿using Etch.OrchardCore.SEO.Redirects.Models;
+using Etch.OrchardCore.SEO.Redirects.Services;
 using Etch.OrchardCore.SEO.Redirects.Validation;
 using Etch.OrchardCore.SEO.Redirects.ViewModels;
 using Microsoft.Extensions.Localization;
@@ -16,14 +17,16 @@ namespace Etch.OrchardCore.SEO.Redirects.Drivers
         # region Dependencies
 
         private readonly IStringLocalizer<RedirectPartDisplay> T;
+        private readonly ITenantService _tenantService;
 
         #endregion
 
         #region Constructor
 
-        public RedirectPartDisplay(IStringLocalizer<RedirectPartDisplay> localizer)
+        public RedirectPartDisplay(IStringLocalizer<RedirectPartDisplay> localizer, ITenantService tenantService)
         {
             T = localizer;
+            _tenantService = tenantService;
         }
 
         #endregion
@@ -34,9 +37,10 @@ namespace Etch.OrchardCore.SEO.Redirects.Drivers
         {
             return Initialize<RedirectPartEditViewModel>("RedirectPart_Edit", model =>
             {
-                model.FromUrl = UrlValidation.CleanFromUrl(part.FromUrl);
+                model.FromUrl = part.FromUrl;
                 model.ToUrl = part.ToUrl;
                 model.IsPermanent = part.ContentItem.Id == 0 ? true : part.IsPermanent;
+                model.TenantUrl = _tenantService.GetTenantUrl();
 
                 return Task.CompletedTask;
             });
@@ -64,11 +68,6 @@ namespace Etch.OrchardCore.SEO.Redirects.Drivers
 
         private void ValidateUrls(RedirectPart part, IUpdateModel updater)
         {
-            if (!UrlValidation.IsRelativeUrl(part.FromUrl))
-            {
-                updater.ModelState.AddModelError(Prefix, nameof(part.FromUrl), T["Your From URL must be relative"]);
-            }
-
             if (!UrlValidation.ValidFromUrl(part.FromUrl))
             {
                 var invalidCharactersForMessage = string.Join(", ", UrlValidation.InvalidCharactersForFromUrl.Select(c => $"\"{c}\""));

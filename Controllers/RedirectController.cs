@@ -3,6 +3,8 @@ using Etch.OrchardCore.SEO.Redirects.Models;
 using OrchardCore.ContentManagement;
 using OrchardCore.Modules;
 using System.Threading.Tasks;
+using OrchardCore.Environment.Shell;
+using Etch.OrchardCore.SEO.Redirects.Services;
 
 namespace Etch.OrchardCore.SEO.Controllers
 {
@@ -12,14 +14,16 @@ namespace Etch.OrchardCore.SEO.Controllers
         #region Dependencies
 
         private readonly IContentManager _contentManager;
+        private readonly ITenantService _tenantService;
 
         #endregion
 
         #region Constructor
 
-        public RedirectController(IContentManager contentManager)
+        public RedirectController(IContentManager contentManager, ITenantService tenantService)
         {
             _contentManager = contentManager;
+            _tenantService = tenantService;
         }
 
         #endregion
@@ -36,6 +40,11 @@ namespace Etch.OrchardCore.SEO.Controllers
             }
 
             var part = contentItem.As<RedirectPart>();
+
+            if (part.ToUrl.StartsWith("/", System.StringComparison.Ordinal))
+            {
+                return new RedirectResult($"{_tenantService.GetTenantUrl()}{part.ToUrl}", part.IsPermanent);
+            }
 
             return new RedirectResult(part.ToUrl, part.IsPermanent);
         }

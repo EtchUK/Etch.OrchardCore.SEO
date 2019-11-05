@@ -101,7 +101,7 @@ namespace Etch.OrchardCore.SEO.Redirects.Import.Services
 
             redirectItem.Author = _httpContextAccessor.HttpContext.User.Identity.Name;
             redirectItem.DisplayText = row.Title;
-            redirectPart.FromUrl = UrlValidation.CleanFromUrl(row.FromUrl)?.Trim();
+            redirectPart.FromUrl = row.FromUrl?.Trim();
             redirectPart.ToUrl = row.ToUrl?.Trim();
             redirectPart.IsPermanent = true;
             redirectPart.Apply();
