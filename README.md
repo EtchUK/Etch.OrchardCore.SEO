@@ -42,6 +42,10 @@ _Under development_
 
 Create redirect content items that'll redirect a relative URL to another URL.
 
+#### Known Issues
+
+When creating a content item to redirect from homepage to another page, you need to make sure to disable the `Home Route` Module to make the redirect work correctly.
+
 #### Import
 
 This feature adds the ability to bulk import redirects from an XLSX file.

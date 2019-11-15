@@ -21,7 +21,8 @@ namespace Etch.OrchardCore.SEO.Redirects.Routing
 
         public override ValueTask<RouteValueDictionary> TransformAsync(HttpContext httpContext, RouteValueDictionary values)
         {
-            if (_entries.TryGetContentItemId(httpContext.Request.Path.ToString().TrimEnd('/'), out var contentItemId))
+            var contentItemId = GetContentItemId(httpContext);
+            if (!string.IsNullOrEmpty(contentItemId))
             {
                 return new ValueTask<RouteValueDictionary>(new RouteValueDictionary {
                     {"Area", "Etch.OrchardCore.SEO"},
@@ -32,6 +33,22 @@ namespace Etch.OrchardCore.SEO.Redirects.Routing
             }
 
             return new ValueTask<RouteValueDictionary>((RouteValueDictionary)null);
+        }
+
+        private string GetContentItemId(HttpContext httpContext)
+        {
+            var url = httpContext.Request.Path.ToString().TrimEnd('/');
+            if (string.IsNullOrEmpty(url) && _entries.TryGetContentItemId("/", out var contentItemId))
+            {
+                return contentItemId;
+            }
+
+            if (_entries.TryGetContentItemId(url, out var contentItem))
+            {
+                return contentItem;
+            }
+
+            return null;
         }
     }
 }

@@ -11,5 +11,7 @@ namespace Etch.OrchardCore.SEO.Redirects.ViewModels
         public string ToUrl { get; set; }
 
         public bool IsPermanent { get; set; }
+
+        public string TenantUrl { get; set; }
     }
 }

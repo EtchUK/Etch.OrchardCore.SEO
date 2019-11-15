@@ -13,14 +13,6 @@ namespace Etch.OrchardCore.SEO.Redirects.Validation
 
         #endregion
 
-        public static string CleanFromUrl(string url)
-        {
-            if (string.IsNullOrWhiteSpace(url))
-                return url;
-
-            return url.StartsWith("/") ? url.Substring(1) : url;
-        }
-
         public static bool IsRelativeUrl(string url)
         {
             Uri result;

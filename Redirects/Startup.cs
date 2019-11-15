@@ -33,6 +33,7 @@ namespace Etch.OrchardCore.SEO.Redirects
             services.AddSingleton<ContentPart, RedirectPart>();
             services.AddSingleton<IIndexProvider, RedirectPartIndexProvider>();
             services.AddSingleton<IRedirectEntries, RedirectEntries>();
+            services.AddSingleton<ITenantService, TenantService>();
 
             services.AddScoped<IDataMigration, Migrations>();
 
