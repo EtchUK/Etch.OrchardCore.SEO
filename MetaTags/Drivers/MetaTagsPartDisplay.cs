@@ -6,6 +6,7 @@ using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentManagement.Display.Models;
 using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
+using OrchardCore.Media.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,10 +53,12 @@ namespace Etch.OrchardCore.SEO.MetaTags.Drivers
 
         public override IDisplayResult Edit(MetaTagsPart metaTagsPart)
         {
+            var itemPaths = metaTagsPart.Images?.ToList().Select(p => new EditMediaFieldItemInfo { Path = p }) ?? new EditMediaFieldItemInfo[] { };
+
             return Initialize<MetaTagsPartViewModel>("MetaTagsPart_Edit", model =>
             {
                 model.Description = metaTagsPart.Description;
-                model.Images = JsonConvert.SerializeObject(metaTagsPart.Images?.ToList() ?? new List<string>());
+                model.Images = JsonConvert.SerializeObject(itemPaths);
                 model.Title = metaTagsPart.Title;
                 return Task.CompletedTask;
             })
@@ -73,7 +76,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Drivers
 
                 part.Images = string.IsNullOrWhiteSpace(model.Images)
                     ? Array.Empty<string>()
-                    : JsonConvert.DeserializeObject<IList<string>>(model.Images).ToArray();
+                    : JsonConvert.DeserializeObject<IList<EditMediaFieldItemInfo>>(model.Images).Select(x => x.Path).ToArray();
 
             }
 
