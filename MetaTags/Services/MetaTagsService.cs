@@ -44,43 +44,43 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
 
         public void RegisterOpenGraph(MetaTagsPart metaTags)
         {
-            _resourceManager.RegisterMeta(new MetaEntry { Name = "og:type", Content = "website" });
-            _resourceManager.RegisterMeta(new MetaEntry { Name = "og:url", Content = GetPageUrl() });
+            _resourceManager.RegisterMeta(new MetaEntry { Property = "og:type", Content = "website" });
+            _resourceManager.RegisterMeta(new MetaEntry { Property = "og:url", Content = GetPageUrl() });
 
             if (!string.IsNullOrWhiteSpace(metaTags.Title))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "og:title", Content = metaTags.Title });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "og:title", Content = metaTags.Title });
             }
 
             if (!string.IsNullOrWhiteSpace(metaTags.Description))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "og:description", Content = metaTags.Description });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "og:description", Content = metaTags.Description });
             }
 
             if (metaTags.Images != null && metaTags.Images.Any())
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "image", Content = GetMediaUrl(metaTags.Images[0]), Property = "og:image" });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "og:image", Content = GetMediaUrl(metaTags.Images[0]) });
             }
         }
 
         public void RegisterTwitter(MetaTagsPart metaTags)
         {
-            _resourceManager.RegisterMeta(new MetaEntry { Name = "twitter:card", Content = "summary_large_image" });
-            _resourceManager.RegisterMeta(new MetaEntry { Name = "twitter:url", Content = GetPageUrl() });
+            _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:card", Content = "summary_large_image" });
+            _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:url", Content = GetPageUrl() });
 
             if (!string.IsNullOrWhiteSpace(metaTags.Title))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "twitter:title", Content = metaTags.Title });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:title", Content = metaTags.Title });
             }
 
             if (!string.IsNullOrWhiteSpace(metaTags.Description))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "twitter:description", Content = metaTags.Description });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:description", Content = metaTags.Description });
             }
 
             if (metaTags.Images != null && metaTags.Images.Any())
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "twitter:image", Content = GetMediaUrl(metaTags.Images[0]) });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:image", Content = GetMediaUrl(metaTags.Images[0]) });
             }
         }
 
