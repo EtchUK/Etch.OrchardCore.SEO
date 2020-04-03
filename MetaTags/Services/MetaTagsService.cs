@@ -59,7 +59,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
 
             if (metaTags.Images != null && metaTags.Images.Any())
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "og:image", Content = GetMediaUrl(metaTags.Images[0]) });
+                _resourceManager.RegisterMeta(new MetaEntry { Name = "image", Content = GetMediaUrl(metaTags.Images[0]), Property = "og:image" });
             }
         }
 
