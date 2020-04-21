@@ -41,8 +41,6 @@ namespace Etch.OrchardCore.SEO.Redirects.Drivers
                 model.ToUrl = part.ToUrl;
                 model.IsPermanent = part.ContentItem.Id == 0 ? true : part.IsPermanent;
                 model.TenantUrl = _tenantService.GetTenantUrl();
-
-                return Task.CompletedTask;
             });
         }
 

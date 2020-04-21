@@ -11,17 +11,16 @@ namespace Etch.OrchardCore.SEO.Redirects.Routing
     public class RedirectRouteTransformer : DynamicRouteValueTransformer
     {
         private readonly IRedirectEntries _entries;
-        private readonly AutorouteOptions _options;
 
-        public RedirectRouteTransformer(IRedirectEntries entries, IOptions<AutorouteOptions> options)
+        public RedirectRouteTransformer(IRedirectEntries entries)
         {
             _entries = entries;
-            _options = options.Value;
         }
 
         public override ValueTask<RouteValueDictionary> TransformAsync(HttpContext httpContext, RouteValueDictionary values)
         {
             var contentItemId = GetContentItemId(httpContext);
+
             if (!string.IsNullOrEmpty(contentItemId))
             {
                 return new ValueTask<RouteValueDictionary>(new RouteValueDictionary {
@@ -37,15 +36,17 @@ namespace Etch.OrchardCore.SEO.Redirects.Routing
 
         private string GetContentItemId(HttpContext httpContext)
         {
+            AutorouteEntry entry;
             var url = httpContext.Request.Path.ToString().TrimEnd('/');
-            if (string.IsNullOrEmpty(url) && _entries.TryGetContentItemId("/", out var contentItemId))
+
+            if (string.IsNullOrEmpty(url) && _entries.TryGetEntryByPath("/", out entry))
             {
-                return contentItemId;
+                return entry.ContentItemId;
             }
 
-            if (_entries.TryGetContentItemId(url, out var contentItem))
+            if (_entries.TryGetEntryByPath(url, out entry))
             {
-                return contentItem;
+                return entry.ContentItemId;
             }
 
             return null;

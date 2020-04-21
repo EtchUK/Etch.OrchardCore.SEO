@@ -60,7 +60,6 @@ namespace Etch.OrchardCore.SEO.MetaTags.Drivers
                 model.Description = metaTagsPart.Description;
                 model.Images = JsonConvert.SerializeObject(itemPaths);
                 model.Title = metaTagsPart.Title;
-                return Task.CompletedTask;
             })
             .Location("Parts#SEO:10");
         }

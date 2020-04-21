@@ -1,6 +1,6 @@
 {
     "name": "moov2.orchardcore.seo",
-    "version": "0.5.5",
+    "version": "0.6.0",
     "description": "Module for Orchard Core that provides useful features for SEO (search engine optimisation).",
     "scripts": {
         "build": "webpack"

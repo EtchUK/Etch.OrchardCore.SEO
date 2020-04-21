@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.5.5-rc1</Version>
+    <Version>0.6.0-rc2</Version>
     <PackageId>Etch.OrchardCore.SEO</PackageId>
     <Title>Etch OrchardCore SEO</Title>
     <Authors>Etch</Authors>
@@ -16,16 +16,15 @@
 
   <ItemGroup>
     <PackageReference Include="FluentExcel" Version="2.2.0" />
-    <PackageReference Include="OrchardCore.Admin" Version="1.0.0-rc1-10004" />
-    <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-rc1-10004" />
-    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-rc1-10004" />
-    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-rc1-10004" />
-    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-rc1-10004" />
-    <PackageReference Include="OrchardCore.Media" Version="1.0.0-rc1-10004" />
-    <PackageReference Include="OrchardCore.Media.Services" Version="1.0.0-rc1-10004" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc1-10004" />
-    <PackageReference Include="OrchardCore.Navigation.Core" Version="1.0.0-rc1-10004" />
-    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-rc1-10004" />
+    <PackageReference Include="OrchardCore.Admin" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.Media" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.Navigation.Core" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-rc2-13450" />
   </ItemGroup>
 
   <ItemGroup>
