@@ -16,7 +16,7 @@ namespace Etch.OrchardCore.SEO.Controllers
         private readonly IContentManager _contentManager;
         private readonly ITenantService _tenantService;
 
-        #endregion
+        #endregion Dependencies
 
         #region Constructor
 
@@ -26,7 +26,7 @@ namespace Etch.OrchardCore.SEO.Controllers
             _tenantService = tenantService;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Actions
 
@@ -40,15 +40,16 @@ namespace Etch.OrchardCore.SEO.Controllers
             }
 
             var part = contentItem.As<RedirectPart>();
+            var toUrl = part.ToUrl;
 
-            if (part.ToUrl.StartsWith("/", System.StringComparison.Ordinal))
+            if (!toUrl.StartsWith("/", System.StringComparison.Ordinal))
             {
-                return new RedirectResult($"{_tenantService.GetTenantUrl()}{part.ToUrl}", part.IsPermanent);
+                toUrl = $"/{toUrl}";
             }
 
-            return new RedirectResult(part.ToUrl, part.IsPermanent);
+            return new RedirectResult($"{_tenantService.GetTenantUrl()}{toUrl}", part.IsPermanent);
         }
 
-        #endregion
+        #endregion Actions
     }
 }
