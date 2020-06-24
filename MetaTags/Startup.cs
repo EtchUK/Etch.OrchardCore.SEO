@@ -21,8 +21,8 @@ namespace Etch.OrchardCore.SEO.MetaTags
 
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IContentPartDisplayDriver, MetaTagsPartDisplay>();
-            services.AddSingleton<ContentPart, MetaTagsPart>();
+            services.AddContentPart<MetaTagsPart>()
+                .UseDisplayDriver<MetaTagsPartDisplay>();
 
             services.AddScoped<IDataMigration, Migrations>();
 
