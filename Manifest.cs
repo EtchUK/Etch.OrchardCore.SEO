@@ -4,7 +4,7 @@ using OrchardCore.Modules.Manifest;
     Name = "SEO",
     Author = "Etch",
     Website = "https://etchuk.com",
-    Version = "0.6.1"
+    Version = "0.6.2"
 )]
 
 [assembly: Feature(
@@ -49,6 +49,7 @@ using OrchardCore.Modules.Manifest;
     Name = "Meta Tags",
     Dependencies = new[]
     {
+        "Etch.OrchardCore.Fields.Dictionary",
         "OrchardCore.Media"
     },
     Description = "Manage meta tags for content items.",

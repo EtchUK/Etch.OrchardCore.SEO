@@ -1,0 +1,14 @@
+{
+  "DictionaryField_Edit": [
+    {
+      "place": "Parts#SEO:15",
+      "contentPart": [ "MetaTagsPart" ]
+    }
+  ],
+  "DictionaryField": [
+    {
+      "place": "-",
+      "contentPart": [ "MetaTagsPart" ]
+    }
+  ]
+}
