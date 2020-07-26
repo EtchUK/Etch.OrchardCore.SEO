@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.6.1-rc2</Version>
+    <Version>0.6.2-rc2</Version>
     <PackageId>Etch.OrchardCore.SEO</PackageId>
     <Title>Etch OrchardCore SEO</Title>
     <Authors>Etch</Authors>
@@ -15,6 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Etch.OrchardCore.Fields" Version="0.8.1-rc1" />
     <PackageReference Include="FluentExcel" Version="2.2.0" />
     <PackageReference Include="OrchardCore.Admin" Version="1.0.0-rc2-13450" />
     <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-rc2-13450" />

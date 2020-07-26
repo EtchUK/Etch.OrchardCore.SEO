@@ -1,4 +1,5 @@
-﻿using Etch.OrchardCore.SEO.MetaTags.Models;
+﻿using Etch.OrchardCore.SEO.MetaTags.Extensions;
+using Etch.OrchardCore.SEO.MetaTags.Models;
 using Etch.OrchardCore.SEO.MetaTags.Services;
 using Etch.OrchardCore.SEO.MetaTags.ViewModels;
 using Newtonsoft.Json;
@@ -40,9 +41,12 @@ namespace Etch.OrchardCore.SEO.MetaTags.Drivers
                 return null;
             }
 
-            _metaTagsService.RegisterDefaults(metaTagsPart);
-            _metaTagsService.RegisterOpenGraph(metaTagsPart);
-            _metaTagsService.RegisterTwitter(metaTagsPart);
+            var customMetaTags = metaTagsPart.GetDictionaryFieldValue(Constants.CustomFieldName);
+
+            _metaTagsService.RegisterCustom(customMetaTags);
+            _metaTagsService.RegisterDefaults(metaTagsPart, customMetaTags);
+            _metaTagsService.RegisterOpenGraph(metaTagsPart, customMetaTags);
+            _metaTagsService.RegisterTwitter(metaTagsPart, customMetaTags);
 
             return Initialize<MetaTagsPartViewModel>("MetaTagsPart", model =>
             {
