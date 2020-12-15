@@ -2,12 +2,14 @@
   "DictionaryField_Edit": [
     {
       "place": "Parts#SEO:15",
+      "differentiator": "MetaTagsPart-Custom",
       "contentPart": [ "MetaTagsPart" ]
     }
   ],
   "DictionaryField": [
     {
       "place": "-",
+      "differentiator": "MetaTagsPart-Custom",
       "contentPart": [ "MetaTagsPart" ]
     }
   ]
