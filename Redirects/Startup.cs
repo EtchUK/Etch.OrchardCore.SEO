@@ -27,10 +27,10 @@ namespace Etch.OrchardCore.SEO.Redirects
         {
             services.AddMvc();
 
-            services.AddScoped<IContentPartDisplayDriver, RedirectPartDisplay>();
-            services.AddScoped<IContentPartHandler, RedirectPartHandler>();
+            services.AddContentPart<RedirectPart>()
+                .UseDisplayDriver<RedirectPartDisplay>()
+                .AddHandler<RedirectPartHandler>();
 
-            services.AddSingleton<ContentPart, RedirectPart>();
             services.AddSingleton<IIndexProvider, RedirectPartIndexProvider>();
             services.AddSingleton<IRedirectEntries, RedirectEntries>();
             services.AddSingleton<ITenantService, TenantService>();
