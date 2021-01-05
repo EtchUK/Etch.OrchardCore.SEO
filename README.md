@@ -52,7 +52,7 @@ This feature adds the ability to bulk import redirects from an XLSX file.
 
 ### Robots.txt
 
-Manage contents of `/robots.txt`.
+Manage contents of `/robots.txt` or block search engines with [noindex](https://developers.google.com/search/docs/advanced/crawling/block-indexing).
 
 ## Installing
 
