@@ -37,7 +37,7 @@ namespace Etch.OrchardCore.SEO.RobotsTxt.Drivers
 
         #region Overrides
 
-        public override async Task<IDisplayResult> EditAsync(RobotsTxtSettings settings, BuildEditorContext context)
+        public override async Task<IDisplayResult> EditAsync(RobotsTxtSettings section, BuildEditorContext context)
         {
             var user = _httpContextAccessor.HttpContext?.User;
 
@@ -48,12 +48,13 @@ namespace Etch.OrchardCore.SEO.RobotsTxt.Drivers
 
             return Initialize<RobosTxtSettingsViewModel>("RobotsTxtSettings_Edit", model =>
             {
-                model.Mode = settings.Mode;
-                model.CustomContent = settings.CustomContent;
+                model.CustomContent = section.CustomContent;
+                model.Mode = section.Mode;
+                model.NoIndex = section.NoIndex;
             }).Location("Content:3").OnGroup(GroupId);
         }
 
-        public override async Task<IDisplayResult> UpdateAsync(RobotsTxtSettings settings, BuildEditorContext context)
+        public override async Task<IDisplayResult> UpdateAsync(RobotsTxtSettings section, BuildEditorContext context)
         {
             var user = _httpContextAccessor.HttpContext?.User;
 
@@ -68,11 +69,12 @@ namespace Etch.OrchardCore.SEO.RobotsTxt.Drivers
 
                 await context.Updater.TryUpdateModelAsync(model, Prefix);
 
-                settings.Mode = model.Mode;
-                settings.CustomContent = model.CustomContent;
+                section.CustomContent = model.CustomContent;
+                section.Mode = model.Mode;
+                section.NoIndex = model.NoIndex;
             }
 
-            return await EditAsync(settings, context);
+            return await EditAsync(section, context);
         }
 
         #endregion

@@ -23,6 +23,16 @@
     <span class="hint">@T["For more information on formatting robots.txt, visit <a href=\"https://robotstxt.org\">robotstxt.org</a>."]</span>
 </fieldset>
 
+<hr />
+
+<fieldset class="form-group" asp-validation-class-for="NoIndex">
+    <div class="custom-control custom-checkbox">
+        <input asp-for="NoIndex" type="checkbox" class="custom-control-input">
+        <label class="custom-control-label" asp-for="NoIndex">@T["Block search indexing with 'noindex'"]</label><br />
+        <span class="hint">@T["Prevent site from appearing in search engines by including <a href=\"https://developers.google.com/search/docs/advanced/crawling/block-indexing\">noindex response header</a>."]</span>
+    </div>
+</fieldset>
+
 <script type="text/javascript">
     document.onreadystatechange = function () {
         if (document.readyState != "interactive") {

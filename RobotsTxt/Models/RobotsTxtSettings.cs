@@ -2,8 +2,8 @@
 {
     public class RobotsTxtSettings
     {
-        public int Mode { get; set; }
-
         public string CustomContent { get; set; }
+        public int Mode { get; set; }
+        public bool NoIndex { get; set; }
     }
 }
