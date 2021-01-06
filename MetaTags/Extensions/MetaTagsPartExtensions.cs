@@ -26,6 +26,11 @@ namespace Etch.OrchardCore.SEO.MetaTags.Extensions
             return part?.Get<MediaField>(Constants.ImageFieldName)?.Paths?.FirstOrDefault() ?? string.Empty;
         }
 
+        public static bool GetNoIndex(this MetaTagsPart part)
+        {
+            return part?.Get<BooleanField>(Constants.NoIndexFieldName)?.Value ?? false;
+        }
+
         public static string GetTitle(this MetaTagsPart part)
         {
             return part?.Get<TextField>(Constants.TitleFieldName)?.Text ?? string.Empty;

@@ -1,4 +1,22 @@
 {
+  "BooleanField_Edit": [
+    {
+      "place": "Parts#SEO:14",
+      "differentiator": "MetaTagsPart-MetaNoIndex",
+      "contentPart": [
+        "MetaTagsPart"
+      ]
+    }
+  ],
+  "BooleanField": [
+    {
+      "place": "-",
+      "differentiator": "MetaTagsPart-MetaNoIndex",
+      "contentPart": [
+        "MetaTagsPart"
+      ]
+    }
+  ],
   "DictionaryField_Edit": [
     {
       "place": "Parts#SEO:15",

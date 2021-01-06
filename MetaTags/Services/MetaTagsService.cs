@@ -38,6 +38,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
             var customMetaTags = part.GetCustom();
             var description = part.GetDescription();
             var imagePath = part.GetImage();
+            var noIndex = part.GetNoIndex();
             var title = part.GetTitle();
 
             if (string.IsNullOrWhiteSpace(title))
@@ -47,6 +48,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
 
             RegisterCustom(customMetaTags);
             RegisterDefaults(title, description, customMetaTags);
+            RegisterNoIndex(noIndex, customMetaTags);
             RegisterOpenGraph(title, description, imagePath, customMetaTags);
             RegisterTwitter(title, description, imagePath, customMetaTags);
         }
@@ -113,6 +115,16 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
         {
             AddMetaEntry("title", title, customMetaTags);
             AddMetaEntry("description", description, customMetaTags);
+        }
+
+        private void RegisterNoIndex(bool noIndex, IList<DictionaryItem> customMetaTags = null)
+        {
+            if (!noIndex)
+            {
+                return;
+            }
+
+            AddMetaEntry("robots", "noindex", customMetaTags);
         }
 
         private void RegisterOpenGraph(string title, string description, string imagePath, IList<DictionaryItem> customMetaTags = null)
