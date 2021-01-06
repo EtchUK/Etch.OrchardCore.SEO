@@ -3,33 +3,68 @@
     {
       "place": "Parts#SEO:15",
       "differentiator": "MetaTagsPart-Custom",
-      "contentPart": [ "MetaTagsPart" ]
+      "contentPart": [
+        "MetaTagsPart"
+      ]
     }
   ],
   "DictionaryField": [
     {
       "place": "-",
       "differentiator": "MetaTagsPart-Custom",
-      "contentPart": [ "MetaTagsPart" ]
+      "contentPart": [
+        "MetaTagsPart"
+      ]
+    }
+  ],
+  "MediaField": [
+    {
+      "place": "-",
+      "differentiator": "MetaTagsPart-MetaImage",
+      "contentPart": [
+        "MetaTagsPart"
+      ]
     }
   ],
   "MediaField_Edit": [
     {
       "place": "Parts#SEO:12",
       "differentiator": "MetaTagsPart-MetaImage",
-      "contentPart": [ "MetaTagsPart" ]
+      "contentPart": [
+        "MetaTagsPart"
+      ]
+    }
+  ],
+  "TextField": [
+    {
+      "place": "-",
+      "differentiator": "MetaTagsPart-MetaDescription",
+      "contentPart": [
+        "MetaTagsPart"
+      ]
+    },
+    {
+      "place": "-",
+      "differentiator": "MetaTagsPart-MetaTitle",
+      "contentPart": [
+        "MetaTagsPart"
+      ]
     }
   ],
   "TextField_Edit": [
     {
       "place": "Parts#SEO:11",
       "differentiator": "MetaTagsPart-MetaDescription",
-      "contentPart": [ "MetaTagsPart" ]
+      "contentPart": [
+        "MetaTagsPart"
+      ]
     },
     {
       "place": "Parts#SEO:10",
       "differentiator": "MetaTagsPart-MetaTitle",
-      "contentPart": [ "MetaTagsPart" ]
+      "contentPart": [
+        "MetaTagsPart"
+      ]
     }
   ]
 }
