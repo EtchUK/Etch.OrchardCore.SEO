@@ -33,7 +33,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Extensions
 
         public static void UpdateDescription(this MetaTagsPart part, string description)
         {
-            var field = part.Get<TextField>(Constants.DescriptionFieldName);
+            var field = part.GetOrCreate<TextField>(Constants.DescriptionFieldName);
 
             if (field != null)
             {
@@ -44,7 +44,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Extensions
 
         public static void UpdateImage(this MetaTagsPart part, string[] paths)
         {
-            var field = part.Get<MediaField>(Constants.ImageFieldName);
+            var field = part.GetOrCreate<MediaField>(Constants.ImageFieldName);
 
             if (field != null)
             {
@@ -55,7 +55,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Extensions
 
         public static void UpdateTitle(this MetaTagsPart part, string title)
         {
-            var field = part.Get<TextField>(Constants.TitleFieldName);
+            var field = part.GetOrCreate<TextField>(Constants.TitleFieldName);
 
             if (field != null)
             {
