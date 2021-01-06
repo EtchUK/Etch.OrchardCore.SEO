@@ -10,6 +10,9 @@
         public const string ImageFieldDisplayName = "Image";
         public const string ImageFieldName = "MetaImage";
 
+        public const string NoIndexFieldDisplayName = "No Index";
+        public const string NoIndexFieldName = "MetaNoIndex";
+
         public const string TitleFieldDisplayName = "Title";
         public const string TitleFieldName = "MetaTitle";
     }

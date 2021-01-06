@@ -40,7 +40,7 @@ namespace Etch.OrchardCore.SEO.MetaTags
                 .WithField(Constants.CustomFieldName, field => field
                     .OfType(typeof(DictionaryField).Name)
                     .WithDisplayName(Constants.CustomFieldName)
-                    .WithPosition("4")
+                    .WithPosition("5")
                     .WithSettings(new DictionaryFieldSettings
                     {
                         Hint = "Apply custom meta tags that will override the defaults applied through defining image, title & description."
@@ -61,6 +61,24 @@ namespace Etch.OrchardCore.SEO.MetaTags
         {
             await _migrateMetaTagsPartService.MigrateAsync();
             return 4;
+        }
+
+        public int UpdateFrom4()
+        {
+            _contentDefinitionManager.AlterPartDefinition("MetaTagsPart", builder => builder
+                .WithField(Constants.NoIndexFieldName, field => field
+                    .OfType(typeof(BooleanField).Name)
+                    .WithDisplayName(Constants.NoIndexFieldDisplayName)
+                    .WithPosition("4")
+                    .WithSettings(new BooleanFieldSettings
+                    {
+                        Label = "Hide from search engines",
+                        Hint = "Prevent page from appearing in search engines using 'noindex' meta tag.",
+                    })
+                )
+            );
+
+            return 5;
         }
 
         private void AddMetaTagFields()
