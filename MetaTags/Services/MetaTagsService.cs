@@ -44,6 +44,11 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
             var imagePath = part.GetImage();
             var title = part.GetTitle();
 
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                title = part.ContentItem.DisplayText;
+            }
+
             RegisterCustom(customMetaTags);
             RegisterDefaults(title, description, customMetaTags);
             RegisterOpenGraph(title, description, imagePath, customMetaTags);
