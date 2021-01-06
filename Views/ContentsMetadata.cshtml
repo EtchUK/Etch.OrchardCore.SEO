@@ -1,0 +1,16 @@
+﻿@model OrchardCore.ContentManagement.Display.ViewModels.ContentItemViewModel
+
+@using OrchardCore.ContentManagement
+
+@{
+    ContentItem contentItem = Model.ContentItem;
+
+    if (Model.ContentItem.Content.MetaTagsPart != null && !string.IsNullOrWhiteSpace((string)Model.ContentItem.Content.MetaTagsPart.MetaTitle.Text))
+    {
+        Title.AddSegment(Html.Raw(Html.Encode((string)Model.ContentItem.Content.MetaTagsPart.MetaTitle.Text)));
+    }
+    else
+    {
+        Title.AddSegment(Html.Raw(Html.Encode(contentItem.DisplayText)));
+    }
+}
