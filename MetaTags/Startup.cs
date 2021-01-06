@@ -1,9 +1,7 @@
-﻿using Fluid;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Etch.OrchardCore.SEO.MetaTags.Drivers;
 using Etch.OrchardCore.SEO.MetaTags.Models;
 using Etch.OrchardCore.SEO.MetaTags.Services;
-using Etch.OrchardCore.SEO.MetaTags.ViewModels;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.Data.Migration;
@@ -14,11 +12,6 @@ namespace Etch.OrchardCore.SEO.MetaTags
     [Feature("Etch.OrchardCore.SEO.MetaTags")]
     public class Startup : StartupBase
     {
-        static Startup()
-        {
-            TemplateContext.GlobalMemberAccessStrategy.Register<MetaTagsPartViewModel>();
-        }
-
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddContentPart<MetaTagsPart>()
@@ -27,6 +20,7 @@ namespace Etch.OrchardCore.SEO.MetaTags
             services.AddScoped<IDataMigration, Migrations>();
 
             services.AddScoped<IMetaTagsService, MetaTagsService>();
+            services.AddScoped<IMigrateMetaTagsPartService, MigrateMetaTagsPartService>();
         }
     }
 }

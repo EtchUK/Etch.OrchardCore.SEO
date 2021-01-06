@@ -1,18 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Etch.OrchardCore.Fields.Dictionary.Models;
+using Etch.OrchardCore.SEO.MetaTags.Extensions;
 using Etch.OrchardCore.SEO.MetaTags.Models;
+using Microsoft.AspNetCore.Http;
+using OrchardCore.ContentManagement;
+using OrchardCore.ContentManagement.Metadata;
+using OrchardCore.ContentManagement.Records;
 using OrchardCore.Media;
 using OrchardCore.ResourceManagement;
-using System.Linq;
-using Etch.OrchardCore.Fields.Dictionary.Models;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.SEO.MetaTags.Services
 {
     public class MetaTagsService : IMetaTagsService
     {
         #region Dependencies
-        
+
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IMediaFileStore _mediaFileStore;
         private readonly IResourceManager _resourceManager;
@@ -32,6 +37,23 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
 
         #region Implementation
 
+        public void Register(MetaTagsPart part)
+        {
+            var customMetaTags = part.GetCustom();
+            var description = part.GetDescription();
+            var imagePath = part.GetImage();
+            var title = part.GetTitle();
+
+            RegisterCustom(customMetaTags);
+            RegisterDefaults(title, description, customMetaTags);
+            RegisterOpenGraph(title, description, imagePath, customMetaTags);
+            RegisterTwitter(title, description, imagePath, customMetaTags);
+        }
+
+        #endregion
+
+        #region Helpers
+
         public void RegisterCustom(IList<DictionaryItem> customMetaTags)
         {
             if (customMetaTags == null)
@@ -45,20 +67,20 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
             }
         }
 
-        public void RegisterDefaults(MetaTagsPart metaTags, IList<DictionaryItem> customMetaTags = null)
+        public void RegisterDefaults(string title, string description, IList<DictionaryItem> customMetaTags = null)
         {
-            if (!string.IsNullOrWhiteSpace(metaTags.Title) && !HasCustomMetaTag(customMetaTags, "title"))
+            if (!string.IsNullOrWhiteSpace(title) && !HasCustomMetaTag(customMetaTags, "title"))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "title", Content = metaTags.Title });
+                _resourceManager.RegisterMeta(new MetaEntry { Name = "title", Content = title });
             }
 
-            if (!string.IsNullOrWhiteSpace(metaTags.Description) && !HasCustomMetaTag(customMetaTags, "description"))
+            if (!string.IsNullOrWhiteSpace(description) && !HasCustomMetaTag(customMetaTags, "description"))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Name = "description", Content = metaTags.Description });
+                _resourceManager.RegisterMeta(new MetaEntry { Name = "description", Content = description });
             }
         }
 
-        public void RegisterOpenGraph(MetaTagsPart metaTags, IList<DictionaryItem> customMetaTags = null)
+        public void RegisterOpenGraph(string title, string description, string imagePath, IList<DictionaryItem> customMetaTags = null)
         {
             if (!HasCustomMetaTag(customMetaTags, "og:type"))
             {
@@ -70,23 +92,23 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
                 _resourceManager.RegisterMeta(new MetaEntry { Property = "og:url", Content = GetPageUrl() });
             }
 
-            if (!string.IsNullOrWhiteSpace(metaTags.Title) && !HasCustomMetaTag(customMetaTags, "og:title"))
+            if (!string.IsNullOrWhiteSpace(title) && !HasCustomMetaTag(customMetaTags, "og:title"))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Property = "og:title", Content = metaTags.Title });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "og:title", Content = title });
             }
 
-            if (!string.IsNullOrWhiteSpace(metaTags.Description) && !HasCustomMetaTag(customMetaTags, "og:description"))
+            if (!string.IsNullOrWhiteSpace(description) && !HasCustomMetaTag(customMetaTags, "og:description"))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Property = "og:description", Content = metaTags.Description });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "og:description", Content = description });
             }
 
-            if (metaTags.Images != null && metaTags.Images.Any() && !HasCustomMetaTag(customMetaTags, "og:image"))
+            if (!string.IsNullOrWhiteSpace(imagePath) && !HasCustomMetaTag(customMetaTags, "og:image"))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Property = "og:image", Content = GetMediaUrl(metaTags.Images[0]) });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "og:image", Content = GetMediaUrl(imagePath) });
             }
         }
 
-        public void RegisterTwitter(MetaTagsPart metaTags, IList<DictionaryItem> customMetaTags = null)
+        public void RegisterTwitter(string title, string description, string imagePath, IList<DictionaryItem> customMetaTags = null)
         {
             if (!HasCustomMetaTag(customMetaTags, "twitter:card"))
             {
@@ -98,19 +120,19 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
                 _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:url", Content = GetPageUrl() });
             }
 
-            if (!string.IsNullOrWhiteSpace(metaTags.Title) && !HasCustomMetaTag(customMetaTags, "twitter:title"))
+            if (!string.IsNullOrWhiteSpace(title) && !HasCustomMetaTag(customMetaTags, "twitter:title"))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:title", Content = metaTags.Title });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:title", Content = title });
             }
 
-            if (!string.IsNullOrWhiteSpace(metaTags.Description) && !HasCustomMetaTag(customMetaTags, "twitter:description"))
+            if (!string.IsNullOrWhiteSpace(description) && !HasCustomMetaTag(customMetaTags, "twitter:description"))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:description", Content = metaTags.Description });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:description", Content = description });
             }
 
-            if (metaTags.Images != null && metaTags.Images.Any() && !HasCustomMetaTag(customMetaTags, "twitter:image"))
+            if (!string.IsNullOrWhiteSpace(imagePath) && !HasCustomMetaTag(customMetaTags, "twitter:image"))
             {
-                _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:image", Content = GetMediaUrl(metaTags.Images[0]) });
+                _resourceManager.RegisterMeta(new MetaEntry { Property = "twitter:image", Content = GetMediaUrl(imagePath) });
             }
         }
 
