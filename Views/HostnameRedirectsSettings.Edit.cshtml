@@ -14,27 +14,25 @@
 <hr />
 
 <div class="form-group">
-    <label asp-for="Redirect">@T["Redirect"]</label>
+    <label asp-for="Redirect">@T["Canonical URLs behaviour"]</label>
     <select asp-for="Redirect" class="form-control content-preview-select js-redirect-select">
-        <option value="@HostnameRedirectModes.None">@T["No Redirect"]</option>
-        <option value="@HostnameRedirectModes.NonWWW">@T["Redirect to none WWW"]</option>
-        <option value="@HostnameRedirectModes.WWW">@T["Redirect to WWW"]</option>
-        <option value="@HostnameRedirectModes.Domain">@T["Redirect to Domain"]</option>
+        <option value="@HostnameRedirectModes.None">@T["Any domain"]</option>
+        <option value="@HostnameRedirectModes.NonWWW">@T["https://example.com"]</option>
+        <option value="@HostnameRedirectModes.WWW">@T["https://www.example.com"]</option>
+        <option value="@HostnameRedirectModes.Domain">@T["Custom"]</option>
     </select>
-    <span class="hint">@T["Redirect to none WWW: Visitors making a request to the site using \"www\" will be redirected with a 301 response to the same URL without www."]</span><br />
-    <span class="hint">@T["Redirect to WWW: Visitors making a request to the site not using \"www\" will be redirected with a 301 response to the same URL with www."]</span><br />
-    <span class="hint">@T["Redirect to Domain: Visitors making a request to the site not using the configured domain will be redirected with a 301 response to the domain."]</span><br />
+    <span class="hint">@T["Redirects will be a 301."]</span><br />
 </div>
 
 <div class="form-group js-redirect-to-site-field" asp-validation-class-for="RedirectToSiteUrl" style="display: none;">
-    <label asp-for="RedirectToSiteUrl">@T["Redirect to Domain"] <span asp-validation-for="RedirectToSiteUrl"></span></label>
+    <label asp-for="RedirectToSiteUrl">@T["Redirect to domain"] <span asp-validation-for="RedirectToSiteUrl"></span></label>
     <input asp-for="RedirectToSiteUrl" class="form-control content-preview-text content-caption-text" placeholder="E.g. https://domain.example.com" />
 </div>
 
 <hr />
 
 <div class="form-group">
-    <label asp-for="TrailingSlashes">@T["Trailing Slashes"]</label>
+    <label asp-for="TrailingSlashes">@T["Trailing slashes"]</label>
     <select asp-for="TrailingSlashes" class="form-control content-preview-select">
         <option value="@TrailingSlashesModes.None">@T["Ignore"]</option>
         <option value="@TrailingSlashesModes.Remove">@T["Remove Trailing Slash"]</option>
@@ -47,7 +45,7 @@
 <div class="form-group" asp-validation-class-for="IgnoredUrls">
     <label asp-for="IgnoredUrls">@T["Ignored URLs"] <span asp-validation-for="IgnoredUrls"></span></label>
     <textarea asp-for="IgnoredUrls" rows="5" class="form-control content-preview-text"></textarea>
-    <span class="hint">@T["URLs that should be ignored by the redirect settings (ideal for handling staging slots within Azure). Use a new line to seperate each URL."]</span>
+    <span class="hint">@T["When URLs start with specified value the request will be ignored from redirect behaviour. Use a new line to seperate each URL."]</span>
 </div>
 
 <script type="text/javascript">
