@@ -4,16 +4,17 @@
 
 @if (Model.Mode == RobotsTxtModes.NotDefined)
 {
-    <p class="alert alert-warning"><a href="/robots.txt">robots.txt</a> will be a 404 response when no mode has been selected.</p>
+    <p class="alert alert-warning">@T["<a href=\"/robots.txt\">robots.txt</a> will be a 404 response when no mode has been selected."]</p>
 }
 
 <div class="form-group">
     <label asp-for="Mode">@T["Mode"]</label>
     <select asp-for="Mode" class="form-control content-preview-select js-mode-select">
-        <option value="@RobotsTxtModes.NotDefined">- Select mode -</option>
-        <option value="@RobotsTxtModes.AllowAllPages">Allow all pages</option>
-        <option value="@RobotsTxtModes.DisallowAllPages">Disallow all pages</option>
-        <option value="@RobotsTxtModes.Custom">Custom</option>
+        <option value="@RobotsTxtModes.NotDefined">@T["- Select mode -"]</option>
+        <option value="@RobotsTxtModes.AllowAllPages">@T["Allow all pages"]</option>
+        <option value="@RobotsTxtModes.DisallowAllPages">@T["Disallow all pages"]</option>
+        <option value="@RobotsTxtModes.Recommended">@T["Recommended"]</option>
+        <option value="@RobotsTxtModes.Custom">@T["Custom"]</option>
     </select>
 </div>
 
