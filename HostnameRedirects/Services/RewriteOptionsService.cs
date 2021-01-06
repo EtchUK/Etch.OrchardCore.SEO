@@ -6,12 +6,14 @@ using System;
 using System.Linq;
 using System.Net;
 using OrchardCore.Admin;
+using Microsoft.Extensions.Options;
 
 namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
-    public class RewriteOptionsService : IRewriteOptionsSevice, IRule {
-
+    public class RewriteOptionsService : IRewriteOptionsSevice, IRule 
+    {
         #region Dependencies
 
+        private readonly AdminOptions _adminOptions;
         private readonly IHostRedirectService _hostRedirectService;
         public ILogger Logger { get; set; } = new NullLogger();
 
@@ -19,7 +21,9 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
 
         #region Constructor
 
-        public RewriteOptionsService(IHostRedirectService hostRedirectService) {
+        public RewriteOptionsService(IOptions<AdminOptions> adminOptions, IHostRedirectService hostRedirectService) 
+        {
+            _adminOptions = adminOptions.Value;
             _hostRedirectService = hostRedirectService;
         }
 
@@ -38,7 +42,8 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
 
             var url = GetURL(context);
 
-            if (CheckIfIgnored(hostnameRedirectsSettings, url) || context.HttpContext.Request.Method.ToLower() != "get") {
+            if (CheckIfIgnored(hostnameRedirectsSettings, url) || context.HttpContext.Request.Method.ToLower() != "get") 
+            {
                 context.Result = RuleResult.ContinueRules;
                 return;
             }
@@ -57,7 +62,6 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
                 response.StatusCode = StatusCode;
                 response.Headers[HeaderNames.Location] = consistentRequestUrl;
                 context.Result = RuleResult.EndResponse;
-                return;
             }
         }
 
@@ -84,15 +88,15 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
             return settings.IgnoredUrls.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).Any(x => url.StartsWith(x));
         }
 
-        private bool IsAdmin(string url) {
+        private bool IsAdmin(string url) 
+        {
             if (string.IsNullOrWhiteSpace(url))
             {
                 return false;
             }
 
             var lowerUrl = url.ToLower();
-
-            return lowerUrl.EndsWith("/admin") || lowerUrl.Contains("/admin/");
+            return lowerUrl.EndsWith($"/{_adminOptions.AdminUrlPrefix.ToLower()}") || lowerUrl.Contains($"/{_adminOptions.AdminUrlPrefix.ToLower()}/");
         }
 
         private bool IsStaticFile(string path) {
