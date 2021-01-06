@@ -7,7 +7,7 @@
     <p class="alert alert-warning"><a href="/robots.txt">robots.txt</a> will be a 404 response when no mode has been selected.</p>
 }
 
-<fieldset class="form-group">
+<div class="form-group">
     <label asp-for="Mode">@T["Mode"]</label>
     <select asp-for="Mode" class="form-control content-preview-select js-mode-select">
         <option value="@RobotsTxtModes.NotDefined">- Select mode -</option>
@@ -15,13 +15,13 @@
         <option value="@RobotsTxtModes.DisallowAllPages">Disallow all pages</option>
         <option value="@RobotsTxtModes.Custom">Custom</option>
     </select>
-</fieldset>
+</div>
 
-<fieldset class="form-group js-custom-content-field" style="display: none;">
+<div class="form-group js-custom-content-field" style="display: none;">
     <label asp-for="CustomContent">@T["Custom Content"]</label>
     <textarea asp-for="CustomContent" rows="5" class="form-control content-preview-text"></textarea>
     <span class="hint">@T["For more information on formatting robots.txt, visit <a href=\"https://robotstxt.org\">robotstxt.org</a>."]</span>
-</fieldset>
+</div>
 
 <hr />
 
