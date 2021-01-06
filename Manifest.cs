@@ -4,7 +4,7 @@ using OrchardCore.Modules.Manifest;
     Name = "SEO",
     Author = "Etch",
     Website = "https://etchuk.com",
-    Version = "0.6.4"
+    Version = "0.7.0"
 )]
 
 [assembly: Feature(
