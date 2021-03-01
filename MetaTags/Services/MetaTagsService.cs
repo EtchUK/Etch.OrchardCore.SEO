@@ -1,4 +1,5 @@
 ﻿using Etch.OrchardCore.Fields.Dictionary.Models;
+using Etch.OrchardCore.Fields.Eventbrite.Models.Dto;
 using Etch.OrchardCore.SEO.MetaTags.Extensions;
 using Etch.OrchardCore.SEO.MetaTags.Models;
 using Microsoft.AspNetCore.Http;
@@ -134,6 +135,8 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
             AddMetaEntry("og:title", title, customMetaTags);
             AddMetaEntry("og:description", description, customMetaTags);
             AddMetaEntry("og:image", GetMediaUrl(imagePath), customMetaTags);
+
+            _resourceManager.RegisterMeta(new MetaEntry { Name = "image", Property = "og:image", Content = GetMediaUrl(imagePath) });
         }
 
         private void RegisterTwitter(string title, string description, string imagePath, IList<DictionaryItem> customMetaTags = null)
