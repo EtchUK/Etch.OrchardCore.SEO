@@ -1,5 +1,4 @@
 ﻿using Etch.OrchardCore.Fields.Dictionary.Models;
-using Etch.OrchardCore.Fields.Eventbrite.Models.Dto;
 using Etch.OrchardCore.SEO.MetaTags.Extensions;
 using Etch.OrchardCore.SEO.MetaTags.Models;
 using Microsoft.AspNetCore.Http;
