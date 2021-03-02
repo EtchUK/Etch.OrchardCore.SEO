@@ -17,15 +17,15 @@
   <ItemGroup>
     <PackageReference Include="Etch.OrchardCore.Fields" Version="0.8.1-rc1" />
     <PackageReference Include="FluentExcel" Version="2.2.0" />
-    <PackageReference Include="OrchardCore.Admin" Version="1.0.0-rc2-13450" />
-    <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-rc2-13450" />
-    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-rc2-13450" />
-    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-rc2-13450" />
-    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-rc2-13450" />
-    <PackageReference Include="OrchardCore.Media" Version="1.0.0-rc2-13450" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc2-13450" />
-    <PackageReference Include="OrchardCore.Navigation.Core" Version="1.0.0-rc2-13450" />
-    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.Admin" Version="1.0.0-rc2-15905" />
+    <PackageReference Include="OrchardCore.Autoroute" Version="1.0.0-rc2-15905" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-rc2-15905" />
+    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.0.0-rc2-15905" />
+    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.0.0-rc2-15905" />
+    <PackageReference Include="OrchardCore.Media" Version="1.0.0-rc2-15905" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-rc2-15905" />
+    <PackageReference Include="OrchardCore.Navigation.Core" Version="1.0.0-rc2-15905" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-rc2-15905" />
   </ItemGroup>
 
   <ItemGroup>

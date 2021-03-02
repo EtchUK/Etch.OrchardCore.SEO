@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Options;
-using OrchardCore.ContentManagement.Routing;
 using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.SEO.Redirects.Routing
@@ -17,13 +15,15 @@ namespace Etch.OrchardCore.SEO.Redirects.Routing
             _entries = entries;
         }
 
-        public override ValueTask<RouteValueDictionary> TransformAsync(HttpContext httpContext, RouteValueDictionary values)
+        public override async ValueTask<RouteValueDictionary> TransformAsync(HttpContext httpContext, RouteValueDictionary values)
         {
-            var contentItemId = GetContentItemId(httpContext);
+            var contentItemId = await GetContentItemIdAsync(httpContext);
 
             if (!string.IsNullOrEmpty(contentItemId))
             {
-                return new ValueTask<RouteValueDictionary>(new RouteValueDictionary {
+                values.Clear();
+
+                return await new ValueTask<RouteValueDictionary>(new RouteValueDictionary {
                     {"Area", "Etch.OrchardCore.SEO"},
                     {"Controller", "Redirect"},
                     {"Action", "Index"},
@@ -31,20 +31,23 @@ namespace Etch.OrchardCore.SEO.Redirects.Routing
                 });
             }
 
-            return new ValueTask<RouteValueDictionary>((RouteValueDictionary)null);
+            return null;
         }
 
-        private string GetContentItemId(HttpContext httpContext)
-        {
-            AutorouteEntry entry;
+        private async Task<string> GetContentItemIdAsync(HttpContext httpContext)
+            {
             var url = httpContext.Request.Path.ToString().TrimEnd('/');
 
-            if (string.IsNullOrEmpty(url) && _entries.TryGetEntryByPath("/", out entry))
+            var (found, entry) = await _entries.TryGetEntryByPathAsync("/");
+
+            if (string.IsNullOrEmpty(url) && found)
             {
                 return entry.ContentItemId;
             }
 
-            if (_entries.TryGetEntryByPath(url, out entry))
+            (found, entry) = await _entries.TryGetEntryByPathAsync(url);
+
+            if (found)
             {
                 return entry.ContentItemId;
             }
