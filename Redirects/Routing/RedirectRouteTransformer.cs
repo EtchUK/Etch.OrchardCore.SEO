@@ -19,23 +19,20 @@ namespace Etch.OrchardCore.SEO.Redirects.Routing
         {
             var contentItemId = await GetContentItemIdAsync(httpContext);
 
-            if (!string.IsNullOrEmpty(contentItemId))
+            if (string.IsNullOrEmpty(contentItemId))
+                return null;
+
+            return new RouteValueDictionary
             {
-                values.Clear();
-
-                return await new ValueTask<RouteValueDictionary>(new RouteValueDictionary {
-                    {"Area", "Etch.OrchardCore.SEO"},
-                    {"Controller", "Redirect"},
-                    {"Action", "Index"},
-                    {"ContentItemId", contentItemId}
-                });
-            }
-
-            return null;
+                { "Area", "Etch.OrchardCore.SEO" },
+                { "Controller", "Redirect" },
+                { "Action", "Index" },
+                { "ContentItemId", contentItemId }
+            };
         }
 
         private async Task<string> GetContentItemIdAsync(HttpContext httpContext)
-            {
+        {
             var url = httpContext.Request.Path.ToString().TrimEnd('/');
 
             var (found, entry) = await _entries.TryGetEntryByPathAsync("/");
