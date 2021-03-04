@@ -134,6 +134,8 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
             AddMetaEntry("og:title", title, customMetaTags);
             AddMetaEntry("og:description", description, customMetaTags);
             AddMetaEntry("og:image", GetMediaUrl(imagePath), customMetaTags);
+
+            _resourceManager.RegisterMeta(new MetaEntry { Name = "image", Property = "og:image", Content = GetMediaUrl(imagePath) });
         }
 
         private void RegisterTwitter(string title, string description, string imagePath, IList<DictionaryItem> customMetaTags = null)
