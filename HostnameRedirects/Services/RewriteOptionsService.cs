@@ -55,12 +55,10 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects.Services {
             consistentRequest = ValidateRedirectToSiteUrl(hostnameRedirectsSettings, consistentRequest);
             consistentRequest = ValidateTrailingSlashes(hostnameRedirectsSettings, consistentRequest);
 
-            var consistentRequestUrl = consistentRequest.ToString();
-
-            if (!consistentRequestUrl.Equals(url)) {
+            if (!Equals(consistentRequest, new Uri(url))) {
                 var response = context.HttpContext.Response;
                 response.StatusCode = StatusCode;
-                response.Headers[HeaderNames.Location] = consistentRequestUrl + context.HttpContext.Request.QueryString;
+                response.Headers[HeaderNames.Location] = consistentRequest.ToString() + context.HttpContext.Request.QueryString;
                 context.Result = RuleResult.EndResponse;
             }
         }
