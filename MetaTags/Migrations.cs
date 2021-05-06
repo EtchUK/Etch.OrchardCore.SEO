@@ -31,7 +31,32 @@ namespace Etch.OrchardCore.SEO.MetaTags
 
             AddMetaTagFields();
 
-            return 1;
+            _contentDefinitionManager.AlterPartDefinition("MetaTagsPart", builder => builder
+                .WithField(Constants.CustomFieldName, field => field
+                    .OfType(typeof(DictionaryField).Name)
+                    .WithDisplayName(Constants.CustomFieldName)
+                    .WithPosition("5")
+                    .WithSettings(new DictionaryFieldSettings
+                    {
+                        Hint = "Apply custom meta tags that will override the defaults applied through defining image, title & description."
+                    })
+                )
+            );
+
+            _contentDefinitionManager.AlterPartDefinition("MetaTagsPart", builder => builder
+                .WithField(Constants.NoIndexFieldName, field => field
+                    .OfType(typeof(BooleanField).Name)
+                    .WithDisplayName(Constants.NoIndexFieldDisplayName)
+                    .WithPosition("4")
+                    .WithSettings(new BooleanFieldSettings
+                    {
+                        Label = "Hide from search engines",
+                        Hint = "Prevent page from appearing in search engines using 'noindex' meta tag.",
+                    })
+                )
+            );
+
+            return 5;
         }
 
         public int UpdateFrom1()
@@ -48,7 +73,7 @@ namespace Etch.OrchardCore.SEO.MetaTags
                 )
             );
 
-            return 4;
+            return 2;
         }
 
         public int UpdateFrom2()
