@@ -17,35 +17,41 @@ namespace Etch.OrchardCore.SEO.Redirects.Routing
             _entries = entries;
         }
 
-        public override ValueTask<RouteValueDictionary> TransformAsync(HttpContext httpContext, RouteValueDictionary values)
+        public override async ValueTask<RouteValueDictionary> TransformAsync(HttpContext httpContext, RouteValueDictionary values)
         {
-            var contentItemId = GetContentItemId(httpContext);
+            var contentItemId = await GetContentItemIdAsync(httpContext);
 
             if (!string.IsNullOrEmpty(contentItemId))
             {
-                return new ValueTask<RouteValueDictionary>(new RouteValueDictionary {
+                return new RouteValueDictionary {
                     {"Area", "Etch.OrchardCore.SEO"},
                     {"Controller", "Redirect"},
                     {"Action", "Index"},
                     {"ContentItemId", contentItemId}
-                });
+                };
             }
 
-            return new ValueTask<RouteValueDictionary>((RouteValueDictionary)null);
+            return null;
         }
 
-        private string GetContentItemId(HttpContext httpContext)
+        private async Task<string> GetContentItemIdAsync(HttpContext httpContext)
         {
-            AutorouteEntry entry;
             var url = httpContext.Request.Path.ToString().TrimEnd('/');
 
-            if (string.IsNullOrEmpty(url) && _entries.TryGetEntryByPath("/", out entry))
+            if (string.IsNullOrEmpty(url))
             {
-                return entry.ContentItemId;
+                (var foundHomepage, var homepageEntry) = await _entries.TryGetEntryByPathAsync("/");
+
+                if (foundHomepage)
+                {
+                    return homepageEntry.ContentItemId;
+                }
             }
 
-            if (_entries.TryGetEntryByPath(url, out entry))
-            {
+            (var found, var entry) = await _entries.TryGetEntryByPathAsync(url);        
+
+            if (found) 
+            { 
                 return entry.ContentItemId;
             }
 

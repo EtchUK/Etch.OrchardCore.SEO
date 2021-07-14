@@ -4,6 +4,7 @@ using Etch.OrchardCore.SEO.Redirects.Import.ViewModels;
 using FluentExcel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
+using OrchardCore.Admin;
 using OrchardCore.DisplayManagement.Notify;
 using OrchardCore.Modules;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.SEO.Controllers
 {
+    [Admin]
     [Feature("Etch.OrchardCore.SEO.Redirects.Import")]
     public class AdminImportRedirectsController : Controller
     {
@@ -42,7 +44,6 @@ namespace Etch.OrchardCore.SEO.Controllers
         }
 
         #endregion Constructor
-
 
         #region Actions
 
