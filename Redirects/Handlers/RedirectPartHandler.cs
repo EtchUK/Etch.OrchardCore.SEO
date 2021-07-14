@@ -26,34 +26,31 @@ namespace Etch.OrchardCore.SEO.Redirects.Handlers
 
         #region Overrides
 
-        public override Task PublishedAsync(PublishContentContext context, RedirectPart part)
+        public override async Task PublishedAsync(PublishContentContext context, RedirectPart part)
         {
             if (!string.IsNullOrWhiteSpace(part.FromUrl))
             {
-                _entries.AddEntry(part.ContentItem.ContentItemId, part.FromUrl);
+                // Update entries from the index table after the session is committed.
+                await _entries.UpdateEntriesAsync();
             }
-
-            return Task.CompletedTask;
         }
 
-        public override Task RemovedAsync(RemoveContentContext context, RedirectPart part)
+        public override async Task UnpublishedAsync(PublishContentContext context, RedirectPart part)
         {
             if (!string.IsNullOrWhiteSpace(part.FromUrl))
             {
-                _entries.RemoveEntry(part.ContentItem.ContentItemId, part.FromUrl);
+                // Update entries from the index table after the session is committed.
+                await _entries.UpdateEntriesAsync();
             }
-
-            return Task.CompletedTask;
         }
 
-        public override Task UnpublishedAsync(PublishContentContext context, RedirectPart part)
+        public override async Task RemovedAsync(RemoveContentContext context, RedirectPart part)
         {
-            if (!string.IsNullOrWhiteSpace(part.FromUrl))
+            if (!string.IsNullOrWhiteSpace(part.FromUrl) && context.NoActiveVersionLeft)
             {
-                _entries.RemoveEntry(part.ContentItem.ContentItemId, part.FromUrl);
+                // Update entries from the index table after the session is committed.
+                await _entries.UpdateEntriesAsync();
             }
-
-            return Task.CompletedTask;
         }
 
         #endregion

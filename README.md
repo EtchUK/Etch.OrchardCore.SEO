@@ -8,7 +8,11 @@ Module for [Orchard Core](https://github.com/OrchardCMS/OrchardCore) that provid
 
 ## Orchard Core Reference
 
-This module is referencing the RC2 build of Orchard Core ([`1.0.0-rc2-13450`](https://www.nuget.org/packages/OrchardCore.Module.Targets/1.0.0-rc2-13450)).
+This module is referencing a stable build of Orchard Core ([`1.0.0`](https://www.nuget.org/packages/OrchardCore.Module.Targets/1.0.0)).
+
+## Installing
+
+This module is available on [NuGet](https://www.nuget.org/packages/Etch.OrchardCore.SEO). Add a reference to your Orchard Core web project via the NuGet package manager. Search for "Etch.OrchardCore.SEO", ensuring include prereleases is checked.
 
 ## Features
 
@@ -35,7 +39,3 @@ This feature adds the ability to bulk import redirects from an XLSX file.
 ### Robots.txt
 
 Manage contents of `/robots.txt` or block search engines with [noindex](https://developers.google.com/search/docs/advanced/crawling/block-indexing).
-
-## Installing
-
-This module is available on [NuGet](https://www.nuget.org/packages/Etch.OrchardCore.SEO). Add a reference to your Orchard Core web project via the NuGet package manager. Search for "Etch.OrchardCore.SEO", ensuring include prereleases is checked.
