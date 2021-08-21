@@ -31,7 +31,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Drivers
         {
             if (context.DisplayType == "Detail")
             {
-                _metaTagsService.Register(part);
+                await _metaTagsService.RegisterAsync(part);
             }
 
             return await base.DisplayAsync(part, context);
