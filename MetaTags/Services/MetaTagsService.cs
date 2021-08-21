@@ -4,9 +4,11 @@ using Etch.OrchardCore.SEO.MetaTags.Models;
 using Microsoft.AspNetCore.Http;
 using OrchardCore.Media;
 using OrchardCore.ResourceManagement;
+using OrchardCore.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.SEO.MetaTags.Services
 {
@@ -17,24 +19,34 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IMediaFileStore _mediaFileStore;
         private readonly IResourceManager _resourceManager;
+        private readonly ISiteService _siteService;
+
+        #endregion
+
+        #region Private Properties
+
+        private ISite _site;
 
         #endregion
 
         #region Constructor
 
-        public MetaTagsService(IHttpContextAccessor httpContextAccessor, IMediaFileStore mediaFileStore, IResourceManager resourceManager)
+        public MetaTagsService(IHttpContextAccessor httpContextAccessor, IMediaFileStore mediaFileStore, IResourceManager resourceManager, ISiteService siteService)
         {
             _httpContextAccessor = httpContextAccessor;
             _mediaFileStore = mediaFileStore;
             _resourceManager = resourceManager;
+            _siteService = siteService;
         }
 
         #endregion
 
         #region Implementation
 
-        public void Register(MetaTagsPart part)
+        public async Task RegisterAsync(MetaTagsPart part)
         {
+            _site = await _siteService.GetSiteSettingsAsync();
+
             var customMetaTags = part.GetCustom();
             var description = part.GetDescription();
             var imagePath = part.GetImage();
@@ -67,6 +79,11 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
 
         private string GetHostUrl()
         {
+            if (!string.IsNullOrWhiteSpace(_site.BaseUrl))
+            {
+                return _site.BaseUrl;
+            }
+
             var request = _httpContextAccessor.HttpContext.Request;
             return $"{request.Scheme}://{request.Host}";
         }
@@ -88,7 +105,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
             return $"{GetHostUrl()}{request.PathBase}{request.Path}";
         }
 
-        private bool HasCustomMetaTag(IList<DictionaryItem> customMetaTags, string name)
+        private static bool HasCustomMetaTag(IList<DictionaryItem> customMetaTags, string name)
         {
             if (customMetaTags == null)
             {

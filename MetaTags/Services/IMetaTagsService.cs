@@ -1,9 +1,10 @@
 ﻿using Etch.OrchardCore.SEO.MetaTags.Models;
+using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.SEO.MetaTags.Services
 {
     public interface IMetaTagsService
     {
-        void Register(MetaTagsPart part);
+        Task RegisterAsync(MetaTagsPart part);
     }
 }
