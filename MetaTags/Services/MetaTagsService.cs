@@ -1,8 +1,17 @@
-﻿using Etch.OrchardCore.Fields.Dictionary.Models;
+﻿using Etch.OrchardCore.Fields.Dictionary.Fields;
+using Etch.OrchardCore.Fields.Dictionary.Models;
 using Etch.OrchardCore.SEO.MetaTags.Extensions;
 using Etch.OrchardCore.SEO.MetaTags.Models;
+using Etch.OrchardCore.SEO.MetaTags.Settings;
+using Fluid;
+using Fluid.Values;
 using Microsoft.AspNetCore.Http;
+using OrchardCore.ContentFields.Fields;
+using OrchardCore.ContentManagement;
+using OrchardCore.Entities;
+using OrchardCore.Liquid;
 using OrchardCore.Media;
+using OrchardCore.Media.Fields;
 using OrchardCore.ResourceManagement;
 using OrchardCore.Settings;
 using System;
@@ -17,6 +26,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
         #region Dependencies
 
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ILiquidTemplateManager _liquidTemplateManager;
         private readonly IMediaFileStore _mediaFileStore;
         private readonly IResourceManager _resourceManager;
         private readonly ISiteService _siteService;
@@ -31,9 +41,10 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
 
         #region Constructor
 
-        public MetaTagsService(IHttpContextAccessor httpContextAccessor, IMediaFileStore mediaFileStore, IResourceManager resourceManager, ISiteService siteService)
+        public MetaTagsService(IHttpContextAccessor httpContextAccessor, ILiquidTemplateManager liquidTemplateManager, IMediaFileStore mediaFileStore, IResourceManager resourceManager, ISiteService siteService)
         {
             _httpContextAccessor = httpContextAccessor;
+            _liquidTemplateManager = liquidTemplateManager;
             _mediaFileStore = mediaFileStore;
             _resourceManager = resourceManager;
             _siteService = siteService;
@@ -47,11 +58,13 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
         {
             _site = await _siteService.GetSiteSettingsAsync();
 
-            var customMetaTags = part.GetCustom();
-            var description = part.GetDescription();
-            var imagePath = part.GetImage();
+            var defaultMetaTags = await GetDefaultMetaTagsAsync(_site, part);
+
+            var customMetaTags = part.GetCustom(defaultMetaTags.Custom);
+            var description = part.GetDescription() ?? defaultMetaTags.Description;
+            var imagePath = part.GetImage() ?? defaultMetaTags.ImagePath;
             var noIndex = part.GetNoIndex();
-            var title = part.GetTitle();
+            var title = part.GetTitle() ?? defaultMetaTags.Title;
 
             if (string.IsNullOrWhiteSpace(title))
             {
@@ -75,6 +88,27 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
             {
                 _resourceManager.RegisterMeta(new MetaEntry { Name = name, Content = content });
             }
+        }
+
+        private async Task<DefaultMetaTags> GetDefaultMetaTagsAsync(ISite siteSettings, MetaTagsPart part)
+        {
+            var settings = siteSettings.As<ContentItem>("DefaultMetaTags")?.Get<ContentPart>("DefaultMetaTags");
+
+            if (settings == null)
+            {
+                return new DefaultMetaTags();
+            }
+
+            var imagePath = settings.Get<MediaField>("Image")?.Paths?.FirstOrDefault() ?? string.Empty;
+            var values = new Dictionary<string, FluidValue>() { ["ContentItem"] = new ObjectValue(part.ContentItem) };
+
+            return new DefaultMetaTags
+            {
+                Custom = settings.Get<DictionaryField>("Custom")?.Data,
+                Description = await _liquidTemplateManager.RenderStringAsync(settings.Get<TextField>("Description")?.Text, NullEncoder.Default, null, values),
+                ImagePath = string.IsNullOrEmpty(imagePath) ? string.Empty : GetMediaUrl(imagePath),
+                Title = await _liquidTemplateManager.RenderStringAsync(settings.Get<TextField>("Title")?.Text, NullEncoder.Default, null, values)
+            };
         }
 
         private string GetHostUrl()

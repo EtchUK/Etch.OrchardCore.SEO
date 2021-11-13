@@ -6,6 +6,7 @@ using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.Data.Migration;
 using OrchardCore.Modules;
+using OrchardCore.Navigation;
 
 namespace Etch.OrchardCore.SEO.MetaTags
 {
@@ -14,6 +15,8 @@ namespace Etch.OrchardCore.SEO.MetaTags
     {
         public override void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<INavigationProvider, AdminMenu>();
+
             services.AddContentPart<MetaTagsPart>()
                 .UseDisplayDriver<MetaTagsPartDisplay>();
 
