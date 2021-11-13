@@ -11,19 +11,26 @@ namespace Etch.OrchardCore.SEO.MetaTags.Extensions
 {
     public static class MetaTagsPartExtensions
     {
-        public static IList<DictionaryItem> GetCustom(this MetaTagsPart part)
+        public static IList<DictionaryItem> GetCustom(this MetaTagsPart part, IList<DictionaryItem> defaults)
         {
-            return part.Get<DictionaryField>(Constants.CustomFieldName)?.Data;
+            var values = part.Get<DictionaryField>(Constants.CustomFieldName)?.Data ?? new List<DictionaryItem>();
+            
+            foreach (var customValue in defaults.Where(x => !values.Any(v => v.Name == x.Name)))
+            {
+                values.Add(customValue);
+            }
+            
+            return values;
         }
 
         public static string GetDescription(this MetaTagsPart part)
         {
-            return part?.Get<TextField>(Constants.DescriptionFieldName)?.Text ?? string.Empty;
+            return part?.Get<TextField>(Constants.DescriptionFieldName)?.Text ?? null;
         }
 
         public static string GetImage(this MetaTagsPart part)
         {
-            return part?.Get<MediaField>(Constants.ImageFieldName)?.Paths?.FirstOrDefault() ?? string.Empty;
+            return part?.Get<MediaField>(Constants.ImageFieldName)?.Paths?.FirstOrDefault() ?? null;
         }
 
         public static bool GetNoIndex(this MetaTagsPart part)
@@ -33,7 +40,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Extensions
 
         public static string GetTitle(this MetaTagsPart part)
         {
-            return part?.Get<TextField>(Constants.TitleFieldName)?.Text ?? string.Empty;
+            return part?.Get<TextField>(Constants.TitleFieldName)?.Text ?? null;
         }
 
         public static void UpdateDescription(this MetaTagsPart part, string description)

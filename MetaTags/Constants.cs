@@ -15,5 +15,15 @@
 
         public const string TitleFieldDisplayName = "Title";
         public const string TitleFieldName = "MetaTitle";
+
+        public static class Defaults
+        {
+            public const string ContentType = "DefaultMetaTags";
+
+            public const string Custom = "Custom";
+            public const string Description = "Description";
+            public const string Image = "Image";
+            public const string Title = "Title";
+        }
     }
 }
