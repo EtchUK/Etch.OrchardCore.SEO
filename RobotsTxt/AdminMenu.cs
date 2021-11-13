@@ -28,6 +28,7 @@ namespace Etch.OrchardCore.SEO.RobotsTxt
                 .Add(T["Configuration"], configuration => configuration
                     .Add(T["SEO"], settings => settings
                         .Add(T["Robots.txt"], T["Robots.txt"], layers => layers
+                        .AddClass("robots").Id("robots")
                             .Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = RobotsTxtSettingsDisplayDriver.GroupId })
                             .Permission(Permissions.ManageRobotsTxt)
                             .LocalNav()
