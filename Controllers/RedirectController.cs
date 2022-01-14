@@ -42,6 +42,11 @@ namespace Etch.OrchardCore.SEO.Controllers
             var part = contentItem.As<RedirectPart>();
             var toUrl = part.ToUrl;
 
+            if (toUrl.StartsWith("https://") || toUrl.StartsWith("http://"))
+            {
+                return new RedirectResult(toUrl, part.IsPermanent);
+            }
+
             if (!toUrl.StartsWith("/", System.StringComparison.Ordinal))
             {
                 toUrl = $"/{toUrl}";
