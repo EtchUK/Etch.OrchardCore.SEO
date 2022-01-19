@@ -49,6 +49,7 @@ using OrchardCore.Modules.Manifest;
     Name = "Meta Tags",
     Dependencies = new[]
     {
+        "OrchardCore.Autoroute",
         "Etch.OrchardCore.Fields.Dictionary",
         "OrchardCore.Media"
     },
