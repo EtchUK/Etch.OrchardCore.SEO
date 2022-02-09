@@ -115,7 +115,7 @@ namespace Etch.OrchardCore.SEO.MetaTags
                     .WithPosition("1")
                     .WithSettings(new TextFieldSettings
                     {
-                        Hint = "Keep the your title around 60 characters and put the keywords you’re focusing on first. Don't go overboard with keywords, at most stick to two.",
+                        Hint = "Keep your title around 60 characters and put the keywords you’re focusing on first. Don't go overboard with keywords, at most stick to two.",
                     })
                 )
             );
@@ -127,7 +127,7 @@ namespace Etch.OrchardCore.SEO.MetaTags
                     .WithPosition("2")
                     .WithSettings(new TextFieldSettings
                     {
-                        Hint = "The meta description often serves as a pitch to people who find your website on Google or social media sites. While it's not required and Google can use text from you website instead of what you specifiy in the meta data, it's better to control the description text where you can.",
+                        Hint = "The meta description often serves as a pitch to people who find your website on Google or social media sites. While it's not required and Google can use text from you website instead of what you specify in the meta data, it's better to control the description text where you can.",
                     })
                     .WithEditor("TextArea")
                 )
@@ -175,7 +175,7 @@ namespace Etch.OrchardCore.SEO.MetaTags
                     .WithPosition("1")
                     .WithSettings(new TextFieldSettings
                     {
-                        Hint = "Keep the your title around 60 characters and put the keywords you’re focusing on first. Don't go overboard with keywords, at most stick to two.",
+                        Hint = "Keep your title around 60 characters and put the keywords you’re focusing on first. Don't go overboard with keywords, at most stick to two.",
                     })
                 )
             );
@@ -187,7 +187,7 @@ namespace Etch.OrchardCore.SEO.MetaTags
                     .WithPosition("2")
                     .WithSettings(new TextFieldSettings
                     {
-                        Hint = "The meta description often serves as a pitch to people who find your website on Google or social media sites. While it's not required and Google can use text from you website instead of what you specifiy in the meta data, it's better to control the description text where you can.",
+                        Hint = "The meta description often serves as a pitch to people who find your website on Google or social media sites. While it's not required and Google can use text from you website instead of what you specify in the meta data, it's better to control the description text where you can.",
                     })
                     .WithEditor("TextArea")
                 )
