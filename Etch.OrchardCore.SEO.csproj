@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <PackageId>Etch.OrchardCore.SEO</PackageId>
     <Title>Etch OrchardCore SEO</Title>
     <Authors>Etch</Authors>
