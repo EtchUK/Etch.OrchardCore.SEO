@@ -106,7 +106,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
             {
                 Custom = settings.Get<DictionaryField>("Custom")?.Data,
                 Description = await _liquidTemplateManager.RenderStringAsync(settings.Get<TextField>("Description")?.Text, NullEncoder.Default, null, values),
-                ImagePath = string.IsNullOrEmpty(imagePath) ? string.Empty : GetMediaUrl(imagePath),
+                ImagePath = imagePath,
                 Title = await _liquidTemplateManager.RenderStringAsync(settings.Get<TextField>("Title")?.Text, NullEncoder.Default, null, values)
             };
         }
