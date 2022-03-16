@@ -14,10 +14,13 @@ namespace Etch.OrchardCore.SEO.MetaTags.Extensions
         public static IList<DictionaryItem> GetCustom(this MetaTagsPart part, IList<DictionaryItem> defaults)
         {
             var values = part.Get<DictionaryField>(Constants.CustomFieldName)?.Data ?? new List<DictionaryItem>();
-            
-            foreach (var customValue in defaults.Where(x => !values.Any(v => v.Name == x.Name)))
+
+            if (defaults != null)
             {
-                values.Add(customValue);
+                foreach (var customValue in defaults.Where(x => !values.Any(v => v.Name == x.Name)))
+                {
+                    values.Add(customValue);
+                }
             }
             
             return values;
