@@ -36,7 +36,7 @@ namespace Etch.OrchardCore.SEO.RobotsTxt.Filters
                 return;
             }
 
-            context.HttpContext.Response.Headers.Add("X-Robots-Tag", "noindex");
+            context.HttpContext.Response.Headers["X-Robots-Tag"] = "noindex";
             await next.Invoke();
         }
 
