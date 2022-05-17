@@ -36,7 +36,7 @@ namespace Etch.OrchardCore.SEO.Redirects.Services
         {
             await EnsureInitializedAsync();
 
-            if (_contentItemIds.TryGetValue(path.TrimEnd('/'), out var entry))
+            if (_contentItemIds.TryGetValue(string.IsNullOrEmpty(path) ? "/" : path.TrimEnd('/'), out var entry))
             {
                 return (true, entry);
             }
