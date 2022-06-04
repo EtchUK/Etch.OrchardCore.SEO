@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.3.1</Version>
+    <Version>1.4.0</Version>
     <PackageId>Etch.OrchardCore.SEO</PackageId>
     <Title>Etch OrchardCore SEO</Title>
     <Authors>Etch</Authors>
@@ -17,15 +17,15 @@
   <ItemGroup>
     <PackageReference Include="Etch.OrchardCore.Fields" Version="1.2.0" />
     <PackageReference Include="FluentExcel" Version="2.2.0" />
-    <PackageReference Include="OrchardCore.Admin" Version="1.3.0" />
-    <PackageReference Include="OrchardCore.Autoroute" Version="1.3.0" />
-    <PackageReference Include="OrchardCore.ContentManagement" Version="1.3.0" />
-    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.3.0" />
-    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.3.0" />
-    <PackageReference Include="OrchardCore.Media" Version="1.3.0" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.3.0" />
-    <PackageReference Include="OrchardCore.Navigation.Core" Version="1.3.0" />
-    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.3.0" />
+    <PackageReference Include="OrchardCore.Admin" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.Autoroute" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.ContentManagement" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.Data.Abstractions" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.Media" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.Navigation.Core" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="1.4.0" />
   </ItemGroup>
 
   <ItemGroup>
