@@ -3,7 +3,6 @@ using Etch.OrchardCore.SEO.Redirects.Models;
 using OrchardCore.ContentManagement;
 using OrchardCore.Modules;
 using System.Threading.Tasks;
-using OrchardCore.Environment.Shell;
 using Etch.OrchardCore.SEO.Redirects.Services;
 
 namespace Etch.OrchardCore.SEO.Controllers
