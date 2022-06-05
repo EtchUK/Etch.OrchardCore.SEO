@@ -1,0 +1,138 @@
+
+#. <label asp-for="FromUrl">@T["From Url"] <span asp-validation-for="FromUrl"></span></label>
+#: Etch.OrchardCore.SEO.Views\RedirectPart.Edit.cshtml:6
+msgctxt "Etch.OrchardCore.SEO.Views.RedirectPart.Edit"
+msgid "From Url"
+msgstr "Yönlenecek Adres"
+
+#. <span class="hint">@T["Relative URL that triggers redirect."]</span>
+#: Etch.OrchardCore.SEO.Views\RedirectPart.Edit.cshtml:13
+msgctxt "Etch.OrchardCore.SEO.Views.RedirectPart.Edit"
+msgid "Relative URL that triggers redirect."
+msgstr "Bu adrese istek geldiğinde, yönlendirme tetiklenecektir."
+
+#. <span class="hint">@T["URL that'll be redirected to."]</span>
+#: Etch.OrchardCore.SEO.Views\RedirectPart.Edit.cshtml:17
+msgctxt "Etch.OrchardCore.SEO.Views.RedirectPart.Edit"
+msgid "To Url"
+msgstr "Gönderilecek adres"
+
+#. <span class="hint">@T["URL that'll be redirected to."]</span>
+#: Etch.OrchardCore.SEO.Views\RedirectPart.Edit.cshtml:19
+msgctxt "Etch.OrchardCore.SEO.Views.RedirectPart.Edit"
+msgid "URL that'll be redirected to."
+msgstr "Gitmesini istediğiniz adres"
+
+#. <label class="custom-control-label" asp-for="IsPermanent">@T["Permanent"]</label>
+#: Etch.OrchardCore.SEO.Views\RedirectPart.Edit.cshtml:25
+msgctxt "Etch.OrchardCore.SEO.Views.RedirectPart.Edit"
+msgid "Permanent"
+msgstr "Kalıcı (Permanent)"
+
+#.  <span class="hint">@T["When checked redirect will be permanent (301), otherwise it'll be a temporary redirect (302)."]</span>
+#: Etch.OrchardCore.SEO.Views\RedirectPart.Edit.cshtml:26
+msgctxt "Etch.OrchardCore.SEO.Views.RedirectPart.Edit"
+msgid "When checked redirect will be permanent (301), otherwise it'll be a temporary redirect (302)."
+msgstr "Seçmeniz halinde adrese kalıcı olarak yönlendirilecektir (301), boş bırakırsanız geçici yönlendirme (302) yapılır."
+
+#.  <h1>@T["Import Redirects"]</h1>
+#: Etch.OrchardCore.SEO.Views\AdminImportRedirects.Index.cshtml:3
+msgctxt "Etch.OrchardCore.SEO.Views.AdminImportRedirects.Index"
+msgid "Import Redirects"
+msgstr "Yönlendirme Kayıtlarını İçe Aktar"
+
+#.  <p>@T["Import multiple 301 redirects by uploading an XLSX spreadsheet using"] <a href="~/Etch.OrchardCore.SEO/Downloads/ImportRedirectTemplate.xlsx" target="_blank">@T["this example template"]</a>.</p>
+#: Etch.OrchardCore.SEO.Views\AdminImportRedirects.Index.cshtml:5
+msgctxt "Etch.OrchardCore.SEO.Views.AdminImportRedirects.Index"
+msgid "Import multiple 301 redirects by uploading an XLSX spreadsheet using"
+msgstr "Excel ile 301 yönlendirmeleri toplu olarak aktarmak için bu dosyayı kullanabilirsin."
+
+#.  <p>@T["Import multiple 301 redirects by uploading an XLSX spreadsheet using"] <a href="~/Etch.OrchardCore.SEO/Downloads/ImportRedirectTemplate.xlsx" target="_blank">@T["this example template"]</a>.</p>
+#: Etch.OrchardCore.SEO.Views\AdminImportRedirects.Index.cshtml:5
+msgctxt "Etch.OrchardCore.SEO.Views.AdminImportRedirects.Index"
+msgid "this example template"
+msgstr "şablon dosya"
+
+#. <button class="btn btn-primary" type="submit">@T["Import"]</button>
+#: Etch.OrchardCore.SEO.Views\AdminImportRedirects.Index.cshtml:5
+msgctxt "Etch.OrchardCore.SEO.Views.AdminImportRedirects.Index"
+msgid "Import"
+msgstr "İçe Aktar"
+
+#. <label class="custom-control-label" asp-for="ForceSSL">@T["Force SSL"]</label><br />
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:9
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Force SSL"
+msgstr "SSL'e zorla"
+
+#.  <span class="hint">@T["Force visitors to use SSL (https). This is a basic implementation that will change the URL from http to https."]</span>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:10
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Force visitors to use SSL (https). This is a basic implementation that will change the URL from http to https."
+msgstr "Ziyaretçileri SSL (https) kullanmaya zorlar. Basit bir http'den https'e yönlendirme işlemi yapar."
+
+#.  <label asp-for="Redirect">@T["Canonical URLs behaviour"]</label>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:17
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Canonical URLs behaviour"
+msgstr "Kurallı URL davranışı"
+
+#.  <option value="@HostnameRedirectModes.None">@T["Any domain"]</option>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:19
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Any domain"
+msgstr "herhangi bir alan adı."
+
+#.  <option value="@HostnameRedirectModes.Domain">@T["Custom"]</option>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:22
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Custom"
+msgstr "Özel"
+
+#. <span class="hint">@T["Redirects will be a 301."]</span><br />
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:24
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Redirects will be a 301."
+msgstr "Yönlendirme http 301 koduyla yönlenecektir."
+
+#. <label asp-for="RedirectToSiteUrl">@T["Redirect to domain"] <span asp-validation-for="RedirectToSiteUrl"></span></label>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:28
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Redirect to domain"
+msgstr "Yönlendirilecek alan adı."
+
+#. <label asp-for="TrailingSlashes">@T["Trailing slashes"]</label>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:35
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Trailing slashes"
+msgstr "Ters Çizgi"
+
+#. <option value="@TrailingSlashesModes.None">@T["Ignore"]</option>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:37
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Ignore"
+msgstr "Dikkate alma"
+
+#. <option value="@TrailingSlashesModes.Remove">@T["Remove Trailing Slash"]</option>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:38
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Remove Trailing Slash"
+msgstr "Ters çizgiyi sil"
+
+#. <option value="@TrailingSlashesModes.Append">@T["Append Trailing Slash"]</option>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:38
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Append Trailing Slash"
+msgstr "Ters çizgiyi ekle"
+
+#. <label asp-for="IgnoredUrls">@T["Ignored URLs"] <span asp-validation-for="IgnoredUrls"></span></label>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:46
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "Ignored URLs"
+msgstr "Dikkate alınmayacak URL'ler"
+
+#. <span class="hint">@T["When URLs start with specified value the request will be ignored from redirect behaviour. Use a new line to seperate each URL."]</span>
+#: Etch.OrchardCore.SEO.Views\HostnameRedirectsSettings.Edit.cshtml:48
+msgctxt "Etch.OrchardCore.SEO.Views.HostnameRedirectsSettings.Edit"
+msgid "When URLs start with specified value the request will be ignored from redirect behaviour. Use a new line to seperate each URL."
+msgstr "Girilen URL'lere istek geldiğinde, yönlendirme işlemi yapılmayacaktır. Her bir URL'i yeni satırda giriniz."
