@@ -6,7 +6,7 @@ namespace Etch.OrchardCore.SEO.Redirects.Validation
     {
         #region Constants / Statics
 
-        public static char[] InvalidCharactersForFromUrl = ":?#[]@!$&'()*+,.;=<>\\|%".ToCharArray();
+        public static char[] InvalidCharactersForFromUrl = ":?#[]@!$&'()*+,;=<>\\|%".ToCharArray();
         public static char[] InvalidCharactersForToUrl = "?#[]@!$&'()*+,;=<>\\|%".ToCharArray();
 
         public const int MaxPathLength = 1024;
