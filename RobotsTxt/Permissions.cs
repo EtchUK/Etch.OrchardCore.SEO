@@ -7,7 +7,7 @@ namespace Etch.OrchardCore.SEO.RobotsTxt
 {
     public class Permissions : IPermissionProvider
     {
-        public static readonly Permission ManageRobotsTxt = new Permission("ManageRobotsTxt", "Manage robots.txt");
+        public static readonly Permission ManageRobotsTxt = new("ManageRobotsTxt", "Manage robots.txt");
 
         public Task<IEnumerable<Permission>> GetPermissionsAsync()
         {

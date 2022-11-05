@@ -122,7 +122,7 @@ namespace Etch.OrchardCore.SEO.Redirects.Import.Services
             return true;
         }
 
-        private bool ValidateRow(ImportRedirectRow row)
+        private static bool ValidateRow(ImportRedirectRow row)
         {
             if (!UrlValidation.IsRelativeUrl(row.FromUrl))
             {

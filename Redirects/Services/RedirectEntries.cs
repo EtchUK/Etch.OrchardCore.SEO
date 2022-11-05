@@ -1,6 +1,6 @@
 ﻿using Etch.OrchardCore.SEO.Redirects.Indexes;
 using Microsoft.Extensions.DependencyInjection;
-using OrchardCore.Autoroute.Services;
+using OrchardCore.Autoroute.Core.Model;
 using OrchardCore.ContentManagement.Routing;
 using OrchardCore.Documents;
 using OrchardCore.Environment.Shell.Scope;
@@ -15,12 +15,12 @@ using YesSql;
 namespace Etch.OrchardCore.SEO.Redirects.Services
 {
     public class RedirectEntries : IRedirectEntries
-    { 
+    {
         private readonly IVolatileDocumentManager<AutorouteStateDocument> _autorouteStateManager;
 
         private ImmutableDictionary<string, AutorouteEntry> _paths = ImmutableDictionary<string, AutorouteEntry>.Empty;
         private ImmutableDictionary<string, AutorouteEntry> _contentItemIds = ImmutableDictionary<string, AutorouteEntry>.Empty;
-        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1);
+        private readonly SemaphoreSlim _semaphore = new(1);
 
         private int _lastIndexId;
         private string _stateIdentifier;
@@ -142,7 +142,7 @@ namespace Etch.OrchardCore.SEO.Redirects.Services
                     RemoveEntries(entriesToRemove);
                     AddEntries(entriesToAdd);
 
-                    _lastIndexId = indexes.LastOrDefault()?.Id ?? 0;
+                    _lastIndexId = (int)(indexes.LastOrDefault()?.Id ?? 0);
                     _stateIdentifier = state.Identifier;
                 }
             }
@@ -174,7 +174,7 @@ namespace Etch.OrchardCore.SEO.Redirects.Services
 
                     AddEntries(entries);
 
-                    _lastIndexId = indexes.LastOrDefault()?.Id ?? 0;
+                    _lastIndexId = (int)(indexes.LastOrDefault()?.Id ?? 0);
                     _stateIdentifier = state.Identifier;
 
                     _initialized = true;

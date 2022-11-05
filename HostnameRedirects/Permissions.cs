@@ -7,7 +7,7 @@ namespace Etch.OrchardCore.SEO.HostnameRedirects
 {
     public class Permissions : IPermissionProvider
     {
-        public static readonly Permission ManageHostnameRedirects = new Permission("ManageHostnameRedirects", "Manage hostname redirects");
+        public static readonly Permission ManageHostnameRedirects = new("ManageHostnameRedirects", "Manage hostname redirects");
 
         public Task<IEnumerable<Permission>> GetPermissionsAsync()
         {
