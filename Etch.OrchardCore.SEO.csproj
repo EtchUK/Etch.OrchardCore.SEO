@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.4.1</Version>
+    <Version>$(VersionNumber)</Version>
     <PackageId>Etch.OrchardCore.SEO</PackageId>
     <Title>Etch OrchardCore SEO</Title>
     <Authors>Etch</Authors>
@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Localization\**" >
+    <Content Include="Localization\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
