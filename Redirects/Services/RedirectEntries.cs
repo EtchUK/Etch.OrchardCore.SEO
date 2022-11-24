@@ -1,6 +1,6 @@
 ﻿using Etch.OrchardCore.SEO.Redirects.Indexes;
 using Microsoft.Extensions.DependencyInjection;
-using OrchardCore.Autoroute.Services;
+using OrchardCore.Autoroute.Core.Model;
 using OrchardCore.ContentManagement.Routing;
 using OrchardCore.Documents;
 using OrchardCore.Environment.Shell.Scope;
@@ -22,7 +22,7 @@ namespace Etch.OrchardCore.SEO.Redirects.Services
         private ImmutableDictionary<string, AutorouteEntry> _contentItemIds = ImmutableDictionary<string, AutorouteEntry>.Empty;
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1);
 
-        private int _lastIndexId;
+        private long _lastIndexId;
         private string _stateIdentifier;
         private bool _initialized;
 
