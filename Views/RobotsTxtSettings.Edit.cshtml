@@ -7,7 +7,7 @@
     <p class="alert alert-warning">@T["<a href=\"/robots.txt\">robots.txt</a> will be a 404 response when no mode has been selected."]</p>
 }
 
-<div class="form-group">
+<div class="mb-3">
     <label asp-for="Mode">@T["Mode"]</label>
     <select asp-for="Mode" class="form-control content-preview-select js-mode-select">
         <option value="@RobotsTxtModes.NotDefined">@T["- Select mode -"]</option>
@@ -18,7 +18,7 @@
     </select>
 </div>
 
-<div class="form-group js-custom-content-field" style="display: none;">
+<div class="mb-3 js-custom-content-field" style="display: none;">
     <label asp-for="CustomContent">@T["Custom Content"]</label>
     <textarea asp-for="CustomContent" rows="5" class="form-control content-preview-text"></textarea>
     <span class="hint">@T["For more information on formatting robots.txt, visit <a href=\"https://robotstxt.org\">robotstxt.org</a>."]</span>
@@ -26,7 +26,7 @@
 
 <hr />
 
-<fieldset class="form-group" asp-validation-class-for="NoIndex">
+<fieldset class="mb-3" asp-validation-class-for="NoIndex">
     <div class="custom-control custom-checkbox">
         <input asp-for="NoIndex" type="checkbox" class="custom-control-input">
         <label class="custom-control-label" asp-for="NoIndex">@T["Block search indexing with 'noindex'"]</label><br />
