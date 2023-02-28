@@ -130,7 +130,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
             }
 
             var imageUrl = _mediaFileStore.MapPathToPublicUrl(path);
-            return imageUrl.StartsWith("http") ? imageUrl : $"{GetHostUrl()}{imageUrl}";
+            return imageUrl.StartsWith("http") ? imageUrl : $"{GetHostUrl()}{imageUrl}?width=1200&height=630&rmode=crop";
         }
 
         private string GetPageUrl()
