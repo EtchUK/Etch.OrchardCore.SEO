@@ -124,13 +124,16 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
 
         public string GetMediaUrl(string path)
         {
+            public const int width = 1200;
+            public const int height = 630;
+
             if (string.IsNullOrWhiteSpace(path))
             {
                 return string.Empty;
             }
 
             var imageUrl = _mediaFileStore.MapPathToPublicUrl(path);
-            return imageUrl.StartsWith("http") ? imageUrl : $"{GetHostUrl()}{imageUrl}?width=1200&height=630&rmode=crop";
+            return imageUrl.StartsWith("http") ? imageUrl : $"{GetHostUrl()}{imageUrl}?width={width}&height={height}&rmode=crop";
         }
 
         private string GetPageUrl()
