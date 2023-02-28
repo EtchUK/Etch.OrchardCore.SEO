@@ -36,6 +36,8 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
         #region Private Properties
 
         private ISite _site;
+        private const int ImageCropHeight = 630;
+        private const int ImageCropWidth = 1200;
 
         #endregion
 
@@ -124,16 +126,13 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
 
         public string GetMediaUrl(string path)
         {
-            public const int width = 1200;
-            public const int height = 630;
-
             if (string.IsNullOrWhiteSpace(path))
             {
                 return string.Empty;
             }
 
             var imageUrl = _mediaFileStore.MapPathToPublicUrl(path);
-            return imageUrl.StartsWith("http") ? imageUrl : $"{GetHostUrl()}{imageUrl}?width={width}&height={height}&rmode=crop";
+            return imageUrl.StartsWith("http") ? imageUrl : $"{GetHostUrl()}{imageUrl}?width={ImageCropWidth}&height={ImageCropHeight}&rmode=crop";
         }
 
         private string GetPageUrl()
