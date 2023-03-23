@@ -206,5 +206,20 @@ namespace Etch.OrchardCore.SEO.MetaTags
                 )
             );
         }
+
+        public int UpdateFrom6()
+        {
+            _contentDefinitionManager.AlterPartDefinition(Constants.Defaults.ContentType, builder => builder
+                .WithField(Constants.Defaults.Image, field => field
+                    .WithSettings(new MediaFieldSettings
+                    {
+                        Hint = "Due to the visual nature of the web, your Meta Tag Image is the most valuable graphic content you can create to encourage users to click and visit your website. 1200×630 is the recommended size. If you don't have an image of these exact dimensions, select something large enough so that the site can crop it to this ratio for you.",
+                        Multiple = false
+                    })
+                )
+            );
+
+            return 7;
+        }
     }
 }
