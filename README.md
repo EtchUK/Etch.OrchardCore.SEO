@@ -4,7 +4,7 @@ Module for [Orchard Core](https://github.com/OrchardCMS/OrchardCore) that provid
 
 ## Build Status
 
-[![Build Status](https://secure.travis-ci.org/etchuk/Etch.OrchardCore.SEO.png?branch=master)](http://travis-ci.org/etchuk/Etch.OrchardCore.SEO) [![NuGet](https://img.shields.io/nuget/v/Etch.OrchardCore.SEO.svg)](https://www.nuget.org/packages/Etch.OrchardCore.SEO)
+[![NuGet](https://img.shields.io/nuget/v/Etch.OrchardCore.SEO.svg)](https://www.nuget.org/packages/Etch.OrchardCore.SEO)
 
 ## Orchard Core Reference
 
