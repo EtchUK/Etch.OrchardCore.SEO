@@ -1,4 +1,4 @@
-﻿using Etch.OrchardCore.SEO.MetaTags.Extensions;
+using Etch.OrchardCore.SEO.MetaTags.Extensions;
 using Etch.OrchardCore.SEO.MetaTags.Models;
 using Microsoft.Extensions.Logging;
 using OrchardCore.ContentManagement;
@@ -40,7 +40,7 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
         {
             _logger.LogInformation("Migrate meta tags content from part to fields");
 
-            var contentTypes = _contentDefinitionManager.LoadTypeDefinitions().Where(x => x.Parts.Any(p => p.Name.Equals(nameof(MetaTagsPart)))).Select(x => x.Name);
+            var contentTypes = (await _contentDefinitionManager.LoadTypeDefinitionsAsync()).Where(x => x.Parts.Any(p => p.Name.Equals(nameof(MetaTagsPart)))).Select(x => x.Name);
             var contentItems = await _session.Query<ContentItem>()
                                 .With<ContentItemIndex>(x => x.Latest)
                                 .Where(x => x.ContentType.IsIn(contentTypes))
