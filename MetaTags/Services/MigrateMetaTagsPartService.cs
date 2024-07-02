@@ -46,8 +46,6 @@ namespace Etch.OrchardCore.SEO.MetaTags.Services
                                 .Where(x => x.ContentType.IsIn(contentTypes))
                                 .ListAsync();
 
-            _logger.LogInformation($"Migrating meta tags content for {contentItems.Count()} content items");
-
             foreach (var contentItem in contentItems)
             {
                 var part = contentItem.As<MetaTagsPart>();
